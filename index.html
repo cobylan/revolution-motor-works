@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revolution Motor Works | Finksburg, MD</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+--gold: #E8A020;
+--gold-light: #f5bc4a;
+--gold-dark: #b87a10;
+--black: #080808;
+--dark: #111111;
+--panel: #181818;
+--border: #222222;
+--mid: #444;
+--muted: #777;
+--light: #e8e8e0;
+--white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: 'Outfit', sans-serif;
+background: var(--black);
+color: var(--light);
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; width: 100%; z-index: 200;
+background: rgba(8,8,8,0.97);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border);
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 52px; height: 70px;
+}
+.nav-logo {
+display: flex; flex-direction: column; gap: 1px;
+cursor: pointer;
+}
+.nav-logo-top {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.5rem; letter-spacing: 4px;
+color: var(--white); line-height: 1;
+}
+.nav-logo-top span { color: var(--gold); }
+.nav-logo-sub {
+font-family: 'Outfit', sans-serif; font-size: .6rem;
+font-weight: 500; letter-spacing: 5px; text-transform: uppercase;
+color: var(--muted);
+}
+.nav-links { display: flex; gap: 40px; align-items: center; }
+.nav-links a {
+font-family: 'Rajdhani', sans-serif;
+font-size: .95rem; font-weight: 600; letter-spacing: 2px;
+text-transform: uppercase; color: var(--muted);
+text-decoration: none; cursor: pointer;
+transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-cta {
+font-family: 'Rajdhani', sans-serif;
+font-size: .85rem; font-weight: 700; letter-spacing: 2px;
+text-transform: uppercase; cursor: pointer;
+padding: 10px 24px; border: none;
+background: var(--gold); color: var(--black);
+transition: background .2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+/* ── PAGES ── */
+.page { display: none; padding-top: 70px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ══ HOME ══ */
+.hero {
+position: relative;
+min-height: calc(100vh - 70px);
+display: flex; align-items: center;
+background: var(--black);
+overflow: hidden;
+}
+
+/* Animated diagonal lines background */
+.hero-lines {
+position: absolute; inset: 0; overflow: hidden; opacity: .4;
+}
+.hero-lines::before {
+content: '';
+position: absolute; inset: -50%;
+background: repeating-linear-gradient(
+65deg,
+transparent,
+transparent 60px,
+rgba(232,160,32,.04) 60px,
+rgba(232,160,32,.04) 61px
+);
+animation: slidelines 18s linear infinite;
+}
+@keyframes slidelines {
+from { transform: translateX(0); }
+to { transform: translateX(88px); }
+}
+
+.hero-glow {
+position: absolute; right: -200px; top: 50%; transform: translateY(-50%);
+width: 900px; height: 900px; border-radius: 50%;
+background: radial-gradient(circle, rgba(232,160,32,.08) 0%, transparent 65%);
+pointer-events: none;
+}
+
+.hero-content {
+position: relative; z-index: 2;
+padding: 100px 52px; max-width: 820px;
+animation: heroIn .9s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes heroIn {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+display: inline-flex; align-items: center; gap: 10px;
+background: rgba(232,160,32,.1); border: 1px solid rgba(232,160,32,.3);
+padding: 7px 18px; margin-bottom: 28px;
+}
+.hero-badge-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero-badge-text {
+font-family: 'Rajdhani', sans-serif; font-size: .8rem;
+font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+color: var(--gold);
+}
+
+.hero-h1 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(4.5rem, 11vw, 9rem);
+line-height: .9; letter-spacing: 3px;
+color: var(--white); margin-bottom: 32px;
+}
+.hero-h1 em { color: var(--gold); font-style: normal; display: block; }
+
+.hero-desc {
+font-size: 1.1rem; font-weight: 300; color: var(--muted);
+max-width: 480px; line-height: 1.8; margin-bottom: 16px;
+}
+.hero-rating {
+display: flex; align-items: center; gap: 10px;
+margin-bottom: 44px;
+}
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 1.1rem; }
+.rating-text { font-size: .9rem; color: #666; }
+.rating-text strong { color: var(--light); }
+
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-gold {
+font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+cursor: pointer; padding: 16px 40px; border: none;
+background: var(--gold); color: var(--black);
+transition: background .2s, transform .15s;
+clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-ghost {
+font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+cursor: pointer; padding: 16px 40px;
+background: transparent; color: var(--light);
+border: 1px solid var(--border);
+transition: border-color .2s, color .2s, transform .15s;
+clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--white); transform: translateY(-2px); }
+
+/* Stats ticker */
+.stats-ticker {
+background: var(--gold);
+display: flex; justify-content: space-around; flex-wrap: wrap;
+padding: 28px 52px; gap: 20px;
+}
+.ticker-item { display: flex; align-items: center; gap: 16px; }
+.ticker-num {
+font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem;
+color: var(--black); line-height: 1;
+}
+.ticker-info {}
+.ticker-label {
+font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+color: rgba(0,0,0,.6);
+}
+.ticker-sub { font-size: .8rem; color: rgba(0,0,0,.5); font-weight: 400; }
+
+/* Why section */
+.section { padding: 100px 52px; }
+.eyebrow {
+font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+font-weight: 700; letter-spacing: 5px; text-transform: uppercase;
+color: var(--gold); margin-bottom: 14px;
+}
+.heading {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(2.8rem, 5vw, 4.5rem);
+color: var(--white); line-height: .95; margin-bottom: 60px;
+}
+
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); }
+.pillar {
+background: var(--dark); padding: 44px 36px;
+position: relative; overflow: hidden;
+transition: background .25s;
+}
+.pillar::before {
+content: ''; position: absolute; top: 0; left: 0; right: 0;
+height: 2px; background: var(--gold);
+transform: scaleX(0); transition: transform .3s;
+transform-origin: left;
+}
+.pillar:hover { background: #161616; }
+.pillar:hover::before { transform: scaleX(1); }
+.pillar-icon { font-size: 2rem; margin-bottom: 18px; display: block; }
+.pillar-title {
+font-family: 'Rajdhani', sans-serif; font-size: 1.15rem;
+font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+color: var(--white); margin-bottom: 10px;
+}
+.pillar-text { font-size: .9rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* Reviews */
+.reviews-bg { background: var(--panel); padding: 100px 52px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+.review {
+background: var(--dark); padding: 36px 32px;
+border: 1px solid var(--border);
+position: relative;
+transition: border-color .25s;
+}
+.review:hover { border-color: rgba(232,160,32,.3); }
+.review-quote {
+font-family: 'Bebas Neue', sans-serif; font-size: 4rem;
+color: rgba(232,160,32,.15); line-height: .8;
+margin-bottom: 12px;
+}
+.review-text { font-size: .95rem; color: #999; line-height: 1.75; margin-bottom: 24px; font-weight: 300; }
+.review-footer { display: flex; justify-content: space-between; align-items: center; }
+.review-author { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1px; color: var(--white); font-size: 1rem; }
+.review-stars { color: var(--gold); font-size: .9rem; letter-spacing: 2px; }
+
+/* ══ SERVICES ══ */
+.page-header { padding: 80px 52px 60px; background: var(--panel); border-bottom: 1px solid var(--border); }
+.page-header p { font-size: 1.05rem; color: var(--muted); max-width: 540px; line-height: 1.8; margin-top: 16px; font-weight: 300; }
+
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1px; background: var(--border); }
+.svc-card {
+background: var(--black); padding: 52px 44px;
+transition: background .2s; cursor: default;
+position: relative; overflow: hidden;
+}
+.svc-card::after {
+content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+height: 2px; background: var(--gold);
+transform: scaleX(0); transition: transform .3s;
+transform-origin: left;
+}
+.svc-card:hover { background: #0e0e0e; }
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-icon { font-size: 2.4rem; margin-bottom: 20px; display: block; }
+.svc-title {
+font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+color: var(--white); margin-bottom: 12px; letter-spacing: 1px;
+}
+.svc-desc { font-size: .95rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+.svc-cta-bar { background: var(--gold); padding: 56px 52px; text-align: center; }
+.svc-cta-bar h2 {
+font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+color: var(--black); margin-bottom: 12px;
+}
+.svc-cta-bar p { color: rgba(0,0,0,.6); margin-bottom: 28px; font-size: 1.05rem; }
+
+/* ══ ABOUT ══ */
+.about-split { display: grid; grid-template-columns: 5fr 7fr; }
+.about-left {
+background: var(--gold);
+padding: 100px 52px;
+display: flex; flex-direction: column; justify-content: center;
+position: relative; overflow: hidden;
+}
+.about-left-bg {
+position: absolute; bottom: -40px; right: -40px;
+font-family: 'Bebas Neue', sans-serif; font-size: 20rem;
+color: rgba(0,0,0,.1); line-height: 1; user-select: none;
+pointer-events: none;
+}
+.about-left-content { position: relative; z-index: 2; }
+.about-num {
+font-family: 'Bebas Neue', sans-serif; font-size: 6rem;
+color: var(--black); line-height: 1;
+}
+.about-num-label {
+font-family: 'Rajdhani', sans-serif; font-size: .85rem;
+font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+color: rgba(0,0,0,.6); margin-bottom: 40px;
+}
+.about-fact { margin-bottom: 20px; }
+.about-fact-num {
+font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+color: var(--black); line-height: 1;
+}
+.about-fact-label {
+font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+color: rgba(0,0,0,.55);
+}
+
+.about-right { background: var(--dark); padding: 100px 64px; }
+.about-right p { font-size: 1.05rem; color: #888; line-height: 1.9; margin-bottom: 22px; font-weight: 300; }
+.about-right p strong { color: var(--light); font-weight: 600; }
+.about-values { margin-top: 44px; display: flex; flex-direction: column; gap: 18px; }
+.about-val { display: flex; gap: 18px; align-items: flex-start; }
+.val-line { width: 2px; background: var(--gold); flex-shrink: 0; margin-top: 3px; height: 40px; }
+.val-text { font-size: .95rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.val-text strong { color: var(--light); font-weight: 600; }
+
+/* ══ CONTACT ══ */
+.contact-split { display: grid; grid-template-columns: 1fr 1fr; }
+.contact-left { background: var(--panel); padding: 90px 60px; }
+.contact-right { background: var(--black); padding: 90px 60px; }
+
+.info-item { margin-bottom: 44px; }
+.info-eyebrow {
+font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+color: var(--gold); margin-bottom: 8px;
+}
+.info-main { font-size: 1.1rem; color: var(--white); font-weight: 500; }
+.info-sub { font-size: .9rem; color: var(--muted); margin-top: 4px; line-height: 1.6; font-weight: 300; }
+
+.hours-table { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.hours-row { display: flex; justify-content: space-between; }
+.hours-day { font-size: .9rem; color: var(--muted); }
+.hours-time { font-size: .9rem; color: var(--light); font-weight: 500; }
+.hours-time.closed { color: #444; }
+
+.form-label {
+display: block;
+font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+color: var(--muted); margin-bottom: 8px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.form-group { margin-bottom: 20px; }
+input, textarea, select {
+width: 100%; background: var(--panel); border: 1px solid var(--border);
+color: var(--light); font-family: 'Outfit', sans-serif;
+font-size: .95rem; padding: 14px 18px;
+outline: none; transition: border-color .2s;
+appearance: none; font-weight: 300;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--gold); }
+textarea { height: 120px; resize: vertical; }
+select option { background: var(--panel); }
+.submit-btn {
+font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+width: 100%; padding: 18px; border: none; cursor: pointer;
+background: var(--gold); color: var(--black);
+transition: background .2s;
+clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.submit-btn:hover { background: var(--gold-light); }
+
+/* ── FOOTER ── */
+footer {
+background: #040404; border-top: 1px solid var(--border);
+padding: 52px 52px 32px;
+}
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; margin-bottom: 48px; }
+.footer-brand {}
+.footer-logo-text {
+font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+letter-spacing: 4px; color: var(--white);
+}
+.footer-logo-text span { color: var(--gold); }
+.footer-tagline { font-size: .85rem; color: #444; margin-top: 6px; letter-spacing: 1px; }
+.footer-links-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-link-head {
+font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+color: #444; margin-bottom: 4px;
+}
+.footer-link {
+font-size: .9rem; color: #555; cursor: pointer; text-decoration: none;
+transition: color .2s;
+}
+.footer-link:hover { color: var(--gold); }
+.footer-bottom {
+border-top: 1px solid var(--border); padding-top: 24px;
+display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: .8rem; color: #333; }
+.footer-address { font-size: .8rem; color: #333; }
+
+/* Responsive */
+@media (max-width: 900px) {
+nav { padding: 0 20px; }
+.nav-links { gap: 20px; }
+.hero-content, .section, .reviews-bg, .page-header { padding-left: 24px; padding-right: 24px; }
+.stats-ticker { padding: 24px; }
+.about-split, .contact-split { grid-template-columns: 1fr; }
+.about-right, .contact-left, .contact-right { padding: 60px 24px; }
+.about-left { padding: 60px 24px; }
+.footer-top { flex-direction: column; }
+footer { padding: 40px 24px 24px; }
+.form-row { grid-template-columns: 1fr; }
+.svc-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-logo" onclick="showPage('home')">
+<div class="nav-logo-top">REVOLUTION <span>MOTOR</span> WORKS</div>
+<div class="nav-logo-sub">Finksburg, Maryland</div>
+</div>
+<div class="nav-links">
+<a onclick="showPage('home')" class="active" id="nav-home">Home</a>
+<a onclick="showPage('services')" id="nav-services">Services</a>
+<a onclick="showPage('about')" id="nav-about">About</a>
+<a onclick="showPage('contact')" id="nav-contact">Contact</a>
+<button class="nav-cta" onclick="showPage('contact')">Get a Quote</button>
+</div>
+</nav>
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="page-home">
+<div class="hero">
+<div class="hero-lines"></div>
+<div class="hero-glow"></div>
+<div class="hero-content">
+<div class="hero-badge">
+<div class="hero-badge-dot"></div>
+<div class="hero-badge-text">Family Owned &amp; Operated · Finksburg, MD</div>
+</div>
+<h1 class="hero-h1">
+REVOLUTION
+<em>MOTOR WORKS</em>
+</h1>
+<p class="hero-desc">Precision auto repair for drivers who care about their vehicle. Honest diagnostics, expert technicians, and a shop you can trust.</p>
+<div class="hero-rating">
+<div class="stars">★★★★★</div>
+<div class="rating-text"><strong>4.9</strong> · 768 Google Reviews</div>
+</div>
+<div class="hero-btns">
+<button class="btn-gold" onclick="showPage('contact')">Schedule Service</button>
+<button class="btn-ghost" onclick="showPage('services')">View Services</button>
+</div>
+</div>
+</div>
+
+<div class="stats-ticker">
+<div class="ticker-item">
+<div class="ticker-num">4.9</div>
+<div class="ticker-info">
+<div class="ticker-label">Star Rating</div>
+<div class="ticker-sub">768 Google Reviews</div>
+</div>
+</div>
+<div class="ticker-item">
+<div class="ticker-num">12+</div>
+<div class="ticker-info">
+<div class="ticker-label">Years in Business</div>
+<div class="ticker-sub">Trusted since day one</div>
+</div>
+</div>
+<div class="ticker-item">
+<div class="ticker-num">MD</div>
+<div class="ticker-info">
+<div class="ticker-label">Serving Pikesville</div>
+<div class="ticker-sub">&amp; surrounding areas</div>
+</div>
+</div>
+<div class="ticker-item">
+<div class="ticker-num">✓</div>
+<div class="ticker-info">
+<div class="ticker-label">Google Verified</div>
+<div class="ticker-sub">Certified business</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="eyebrow">Why Revolution Motor Works</div>
+<div class="heading">WE TREAT YOUR<br>CAR LIKE OUR OWN</div>
+<div class="pillars">
+<div class="pillar"><span class="pillar-icon">🔧</span><div class="pillar-title">Expert Technicians</div><div class="pillar-text">Skilled mechanics with years of real-world experience across all makes and models — domestic and foreign.</div></div>
+<div class="pillar"><span class="pillar-icon">💬</span><div class="pillar-title">Honest Communication</div><div class="pillar-text">We explain exactly what your car needs and why — no upsells, no jargon, no surprises on your bill.</div></div>
+<div class="pillar"><span class="pillar-icon">⚡</span><div class="pillar-title">Fast Turnaround</div><div class="pillar-text">We work efficiently so you're not without your vehicle longer than necessary. Your time matters.</div></div>
+<div class="pillar"><span class="pillar-icon">🏠</span><div class="pillar-title">Family Owned</div><div class="pillar-text">We're not a chain. We're your neighbors in Finksburg — proud to serve our community with integrity.</div></div>
+</div>
+</div>
+
+<div class="reviews-bg">
+<div class="eyebrow">Google Reviews</div>
+<div class="heading">WHAT OUR<br>CUSTOMERS SAY</div>
+<div class="reviews-grid">
+<div class="review">
+<div class="review-quote">"</div>
+<p class="review-text">Revolution Motor Works is hands down the best shop in the area. They diagnosed my car in under an hour and had it fixed same day. Fair price, no BS.</p>
+<div class="review-footer">
+<div class="review-author">— James T.</div>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<div class="review">
+<div class="review-quote">"</div>
+<p class="review-text">Family-owned feel with professional-grade work. I've been taking my cars here for years and have never had a bad experience. Highly recommend.</p>
+<div class="review-footer">
+<div class="review-author">— Sandra R.</div>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<div class="review">
+<div class="review-quote">"</div>
+<p class="review-text">Brought in my BMW and they knew exactly what they were doing. Transparent pricing, quick communication, and the car drives better than ever.</p>
+<div class="review-footer">
+<div class="review-author">— Marcus D.</div>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<div class="page" id="page-services">
+<div class="page-header">
+<div class="eyebrow">What We Do</div>
+<div class="heading" style="margin-bottom:0">OUR SERVICES</div>
+<p>From routine maintenance to complex repairs, Revolution Motor Works handles it all. Every job is done right the first time.</p>
+</div>
+<div class="svc-grid">
+<div class="svc-card"><span class="svc-icon">🔴</span><div class="svc-title">Brake Repair</div><p class="svc-desc">Pads, rotors, calipers, and brake fluid flushes. We inspect your full brake system and give you a straight, honest answer on what needs attention.</p></div>
+<div class="svc-card"><span class="svc-icon">🔧</span><div class="svc-title">Car Maintenance</div><p class="svc-desc">Oil changes, filter replacements, fluid top-offs, and scheduled maintenance to keep your vehicle running at peak condition year-round.</p></div>
+<div class="svc-card"><span class="svc-icon">⚡</span><div class="svc-title">Electrical Repair</div><p class="svc-desc">Battery issues, alternator problems, wiring faults, and full electrical diagnostics. We track down the root cause — not just the symptom.</p></div>
+<div class="svc-card"><span class="svc-icon">⚙️</span><div class="svc-title">Engine Repair</div><p class="svc-desc">From minor tune-ups to full engine rebuilds. Our technicians have the tools and expertise to handle serious engine work with precision.</p></div>
+<div class="svc-card"><span class="svc-icon">🔬</span><div class="svc-title">General Diagnostics</div><p class="svc-desc">Check engine light on? We run comprehensive computer diagnostics and physical inspections to accurately identify any issues with your vehicle.</p></div>
+<div class="svc-card"><span class="svc-icon">🚗</span><div class="svc-title">More Services</div><p class="svc-desc">Suspension, transmission, AC & heating, tires, and more. If it's on your vehicle, we can likely service it. Give us a call to ask.</p></div>
+</div>
+<div class="svc-cta-bar">
+<h2>NOT SURE WHAT YOU NEED?</h2>
+<p>Bring it in or call us — we'll figure it out together.</p>
+<button class="btn-gold" style="clip-path:none;" onclick="showPage('contact')">Contact Us Today</button>
+</div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="page" id="page-about">
+<div class="about-split">
+<div class="about-left">
+<div class="about-left-bg">R</div>
+<div class="about-left-content">
+<div class="about-num">12+</div>
+<div class="about-num-label">Years in Business</div>
+<div class="about-fact">
+<div class="about-fact-num">4.9★</div>
+<div class="about-fact-label">768 Google Reviews</div>
+</div>
+<div class="about-fact">
+<div class="about-fact-num">100%</div>
+<div class="about-fact-label">Family Owned & Operated</div>
+</div>
+<div class="about-fact">
+<div class="about-fact-num">✓</div>
+<div class="about-fact-label">Google Verified Business</div>
+</div>
+</div>
+</div>
+<div class="about-right">
+<div class="eyebrow">Our Story</div>
+<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</div>
+<p>Revolution Motor Works was built on a simple idea: <strong>every customer deserves honest, high-quality auto repair at a fair price.</strong> We're a family-owned shop located in Finksburg, Maryland, proud to serve the Pikesville area and surrounding communities.</p>
+<p>Over the past 12+ years, we've earned a reputation for doing the work right — the first time. Our team brings deep expertise across all vehicle makes and models, from everyday commuters to performance vehicles. We invest in proper tools and training so you get dealer-level knowledge without the dealer-level markup.</p>
+<p>With nearly 800 five-star Google reviews, our track record speaks for itself. But we never take that trust for granted — every car that comes through our door gets our full attention and care.</p>
+<div class="about-values">
+<div class="about-val"><div class="val-line"></div><div class="val-text"><strong>Transparency.</strong> We show you what's wrong and explain your options before we do anything.</div></div>
+<div class="about-val"><div class="val-line"></div><div class="val-text"><strong>Quality.</strong> We use proper parts and back our work. No shortcuts.</div></div>
+<div class="about-val"><div class="val-line"></div><div class="val-text"><strong>Community.</strong> Finksburg is our home — we take pride in taking care of our neighbors.</div></div>
+</div>
+</div>
+</div>
+<div style="padding:72px 52px; text-align:center; background:var(--black);">
+<div class="eyebrow" style="text-align:center">Come See Us</div>
+<div class="heading" style="text-align:center; margin-bottom:20px;">READY TO GET STARTED?</div>
+<p style="color:var(--muted); margin-bottom:32px; font-size:1.05rem; font-weight:300;">Drop by, call us, or send a message — we're here to help.</p>
+<button class="btn-gold" onclick="showPage('contact')">Get In Touch</button>
+</div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div class="page" id="page-contact">
+<div class="contact-split">
+<div class="contact-left">
+<div class="eyebrow">Find Us</div>
+<div class="heading" style="font-size:3rem; margin-bottom:44px;">GET IN<br>TOUCH</div>
+
+<div class="info-item">
+<div class="info-eyebrow">📞 Phone</div>
+<div class="info-main">(410) 425-4916</div>
+<div class="info-sub">Call us during business hours</div>
+</div>
+
+<div class="info-item">
+<div class="info-eyebrow">📍 Address</div>
+<div class="info-main">3306 Baltimore Blvd</div>
+<div class="info-sub">Finksburg, Maryland 21048</div>
+</div>
+
+<div class="info-item">
+<div class="info-eyebrow">🕐 Hours</div>
+<div class="hours-table">
+<div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">8:00 AM – 5:00 PM</span></div>
+<div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">8:00 AM – 5:00 PM</span></div>
+<div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">8:00 AM – 5:00 PM</span></div>
+<div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">8:00 AM – 5:00 PM</span></div>
+<div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">8:00 AM – 5:00 PM</span></div>
+<div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time closed">Closed</span></div>
+<div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time closed">Closed</span></div>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-eyebrow">📍 Service Area</div>
+<div class="info-main">Pikesville &amp; Nearby Areas</div>
+<div class="info-sub">Serving Carroll and Baltimore counties</div>
+</div>
+</div>
+
+<div class="contact-right">
+<div class="eyebrow">Send a Message</div>
+<div class="heading" style="font-size:2.8rem; margin-bottom:36px;">REQUEST<br>SERVICE</div>
+
+<div class="form-row">
+<div>
+<label class="form-label">First Name</label>
+<input type="text" placeholder="John">
+</div>
+<div>
+<label class="form-label">Last Name</label>
+<input type="text" placeholder="Smith">
+</div>
+</div>
+<div class="form-group">
+<label class="form-label">Phone Number</label>
+<input type="tel" placeholder="(410) 000-0000">
+</div>
+<div class="form-group">
+<label class="form-label">Email Address</label>
+<input type="email" placeholder="you@email.com">
+</div>
+<div class="form-group">
+<label class="form-label">Service Needed</label>
+<select>
+<option value="">Select a service...</option>
+<option>Brake Repair</option>
+<option>Car Maintenance / Oil Change</option>
+<option>Electrical System Repair</option>
+<option>Engine Repair</option>
+<option>General Diagnostics</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label">Vehicle Details &amp; Issue Description</label>
+<textarea placeholder="Year, make, model — and describe what's going on with your vehicle..."></textarea>
+</div>
+<button class="submit-btn">Send Message →</button>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-logo-text">REVOLUTION <span>MOTOR</span> WORKS</div>
+<div class="footer-tagline">Family owned · Finksburg, MD · (410) 425-4916</div>
+</div>
+<div class="footer-links-col">
+<div class="footer-link-head">Navigate</div>
+<a class="footer-link" onclick="showPage('home')">Home</a>
+<a class="footer-link" onclick="showPage('services')">Services</a>
+<a class="footer-link" onclick="showPage('about')">About</a>
+<a class="footer-link" onclick="showPage('contact')">Contact</a>
+</div>
+<div class="footer-links-col">
+<div class="footer-link-head">Contact</div>
+<span class="footer-link">(410) 425-4916</span>
+<span class="footer-link">Mon–Fri: 8 AM – 5 PM</span>
+<span class="footer-link">Sat–Sun: Closed</span>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-copy">© 2025 Revolution Motor Works. All rights reserved.</div>
+<div class="footer-address">3306 Baltimore Blvd, Finksburg, MD 21048</div>
+</div>
+</footer>
+
+<script>
+function showPage(id) {
+document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+document.getElementById('page-' + id).classList.add('active');
+document.getElementById('nav-' + id).classList.add('active');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
