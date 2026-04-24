@@ -649,27 +649,38 @@ REVOLUTION
 <div class="eyebrow">Send a Message</div>
 <div class="heading" style="font-size:2.8rem; margin-bottom:36px;">REQUEST<br>SERVICE</div>
 
+<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+
+<input type="hidden" name="form-name" value="contact">
+
+<p style="display:none">
+<label>Don’t fill this out: <input name="bot-field"></label>
+</p>
+
 <div class="form-row">
 <div>
 <label class="form-label">First Name</label>
-<input type="text" placeholder="John">
+<input type="text" name="firstName" required>
 </div>
 <div>
 <label class="form-label">Last Name</label>
-<input type="text" placeholder="Smith">
+<input type="text" name="lastName" required>
 </div>
 </div>
+
 <div class="form-group">
 <label class="form-label">Phone Number</label>
-<input type="tel" placeholder="(410) 000-0000">
+<input type="tel" name="phone" required>
 </div>
+
 <div class="form-group">
 <label class="form-label">Email Address</label>
-<input type="email" placeholder="you@email.com">
+<input type="email" name="email" required>
 </div>
+
 <div class="form-group">
 <label class="form-label">Service Needed</label>
-<select>
+<select name="service">
 <option value="">Select a service...</option>
 <option>Brake Repair</option>
 <option>Car Maintenance / Oil Change</option>
@@ -679,11 +690,18 @@ REVOLUTION
 <option>Other</option>
 </select>
 </div>
+
 <div class="form-group">
-<label class="form-label">Vehicle Details &amp; Issue Description</label>
-<textarea placeholder="Year, make, model — and describe what's going on with your vehicle..."></textarea>
+<label class="form-label">Vehicle Details</label>
+<textarea name="message" required></textarea>
 </div>
-<button class="submit-btn">Send Message →</button>
+
+<div data-netlify-recaptcha="true"></div>
+
+<button class="submit-btn" type="submit">Send Message →</button>
+
+</form>
+</div>
 </div>
 </div>
 </div>
