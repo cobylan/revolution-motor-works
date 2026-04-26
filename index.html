@@ -1372,9 +1372,9 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <div class="booking-intro">
 <strong>Fast appointment request:</strong> choose the service, preferred date/time, and vehicle information. A staff member can confirm the exact appointment after reviewing the request.
 </div>
-<form action="https://formspree.io/f/xrervpkr" autocomplete="on" class="booking-form" id="appointment-form" method="POST" name="appointment" onsubmit="return submitAppointmentFormspree(event)">
+<form action="/" autocomplete="on" class="booking-form" data-netlify="true" data-netlify-honeypot="company_website" id="appointment-form" method="POST" name="appointment" onsubmit="return submitAppointmentNetlify(event)">
+<input name="form-name" type="hidden" value="appointment"/>
 <input name="formType" type="hidden" value="Appointment Request"/>
-<input name="_subject" type="hidden" value="New appointment request from Revolution Motor Works website"/>
 <input autocomplete="off" class="honeypot honeypot" name="company_website" tabindex="-1" type="text"/>
 <div class="form-row">
 <div>
@@ -1748,9 +1748,9 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <div class="contact-right clean-contact-card"><div class="eyebrow">Quick Actions</div><div class="heading" style="font-size:2.8rem; margin-bottom:30px;">CALL OR<br/>VISIT</div><p class="booking-intro"><strong>Need service?</strong> Use the booking page for appointments. Use this page for phone, hours, directions, and location details.</p><div class="contact-action-stack"><a class="btn-gold" href="tel:4104254916" style="text-decoration:none; text-align:center; clip-path:none;">Call Now</a><a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" style="text-decoration:none; text-align:center; clip-path:none;" target="_blank">Get Directions</a><button class="btn-ghost" onclick="showPage('book')" style="clip-path:none;" type="button">Book Appointment</button></div>
 <div style="height:32px"></div>
 <div class="eyebrow">Quick Question</div>
-<form action="https://formspree.io/f/xrervpkr" class="booking-form" id="contact-form" method="POST" name="contact" onsubmit="return submitContactFormspree(event)">
+<form action="/" class="booking-form" data-netlify="true" data-netlify-honeypot="company_website_contact" id="contact-form" method="POST" name="contact" onsubmit="return submitContactNetlify(event)">
+<input name="form-name" type="hidden" value="contact"/>
 <input name="formType" type="hidden" value="Contact Question"/>
-<input name="_subject" type="hidden" value="New question from Revolution Motor Works website"/>
 <input autocomplete="off" class="honeypot" name="company_website_contact" tabindex="-1" type="text"/>
 <div class="form-row">
 <div>
@@ -2037,7 +2037,7 @@ function submitAppointment(event) {
           <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear} ${data.vehicleMake} ${data.vehicleModel}</div>
           <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
         </div>
-        <div class="success-panel-sub" style="margin-top:14px;">Demo note: on GitHub Pages this saves in the browser. For the live client site, connect this form to a backend, Formspree, Netlify Forms, Firebase, or a shop CRM so the business receives the request.</div>
+        <div class="success-panel-sub" style="margin-top:14px;">Demo note: on GitHub Pages this saves in the browser. For the live client site, connect this form to a backend, Netlify Forms, Firebase, or a shop CRM so the business receives the request.</div>
         <div class="success-panel-actions">
           <a href="tel:+14104254916">Call Shop</a>
           <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
@@ -2306,124 +2306,123 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* Formspree helpers — endpoint connected */
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrervpkr';
 
-async function postToFormspree(form) {
-  const formData = new FormData(form);
-  const response = await fetch(FORMSPREE_ENDPOINT, {
+/* Netlify Forms helpers */
+function encodeNetlifyForm(form) {
+  return new URLSearchParams(new FormData(form)).toString();
+}
+
+async function postToNetlify(form) {
+  const response = await fetch('/', {
     method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: formData
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encodeNetlifyForm(form)
   });
-  if (!response.ok) {
-    let message = 'Form submission failed';
-    try {
-      const errorData = await response.json();
-      if (errorData && errorData.errors && errorData.errors.length) {
-        message = errorData.errors.map(error => error.message).join(', ');
-      }
-    } catch (error) {}
-    throw new Error(message);
-  }
+  if (!response.ok) throw new Error('Netlify form submission failed');
   return response;
 }
 
-function submitAppointmentFormspree(event) {
+function submitAppointmentNetlify(event) {
   event.preventDefault();
   const form = document.getElementById('appointment-form');
   const status = document.getElementById('form-status');
   const confirmation = document.getElementById('appointment-confirmation');
-  const honeypot = form.querySelector('[name="company_website"]');
+  const honeypot = form ? form.querySelector('[name="company_website"]') : null;
 
-  confirmation.classList.remove('show');
-  confirmation.innerHTML = '';
+  if (confirmation) {
+    confirmation.classList.remove('show');
+    confirmation.innerHTML = '';
+  }
 
   if (honeypot && honeypot.value) {
-    status.textContent = 'Submission blocked.';
+    if (status) status.textContent = 'Submission blocked.';
     showSiteMessage('error', 'Submission Blocked', 'This request looked automated, so it was not submitted.');
     return false;
   }
 
-  const dateValue = document.getElementById('preferred-date').value;
-  if (isWeekendDate(dateValue)) {
-    status.textContent = 'Please choose a weekday. Revolution Motor Works is closed Saturday and Sunday.';
+  const dateValue = document.getElementById('preferred-date')?.value;
+  if (dateValue && isWeekendDate(dateValue)) {
+    if (status) status.textContent = 'Please choose a weekday. Revolution Motor Works is closed Saturday and Sunday.';
     showSiteMessage('error', 'Choose a Weekday', 'Please select Monday through Friday.');
     return false;
   }
 
   const data = Object.fromEntries(new FormData(form));
-  status.textContent = 'Sending appointment request...';
+  if (status) status.textContent = 'Sending appointment request...';
 
-  postToFormspree(form)
+  postToNetlify(form)
     .then(() => {
       const savedAppointments = JSON.parse(localStorage.getItem('appointmentRequests') || '[]');
       savedAppointments.push({ ...data, submittedAt: new Date().toISOString() });
       localStorage.setItem('appointmentRequests', JSON.stringify(savedAppointments));
 
-      status.textContent = '';
-      confirmation.innerHTML = `
-        <div class="success-panel">
-          <div class="success-panel-head">
-            <div class="success-panel-icon">✓</div>
-            <div>
-              <div class="success-panel-title">Appointment Request Sent</div>
-              <div class="success-panel-sub">Thanks, ${data.firstName || 'there'}. Your request was emailed to the shop through Formspree.</div>
+      if (status) status.textContent = '';
+      if (confirmation) {
+        confirmation.innerHTML = `
+          <div class="success-panel">
+            <div class="success-panel-head">
+              <div class="success-panel-icon">✓</div>
+              <div>
+                <div class="success-panel-title">Appointment Request Sent</div>
+                <div class="success-panel-sub">Thanks, ${data.firstName || 'there'}. Your request was submitted and is ready for the shop to review.</div>
+              </div>
             </div>
-          </div>
-          <div class="success-panel-grid">
-            <div class="success-panel-item"><strong>Service</strong>${data.service || 'Service request'}</div>
-            <div class="success-panel-item"><strong>Preferred Time</strong>${data.preferredDate || ''} at ${data.preferredTime || ''}</div>
-            <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear || ''} ${data.vehicleMake || ''} ${data.vehicleModel || ''}</div>
-            <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
-          </div>
-          <div class="success-panel-sub" style="margin-top:14px;">This form is connected to Formspree. Check the recipient email inbox and the Formspree dashboard for submissions.</div>
-          <div class="success-panel-actions">
-            <a href="tel:+14104254916">Call Shop</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
-            <button type="button" onclick="showPage('home')">Back Home</button>
-          </div>
-        </div>`;
-      confirmation.classList.add('show');
+            <div class="success-panel-grid">
+              <div class="success-panel-item"><strong>Service</strong>${data.service || 'Service request'}</div>
+              <div class="success-panel-item"><strong>Preferred Time</strong>${data.preferredDate || ''} at ${data.preferredTime || ''}</div>
+              <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear || ''} ${data.vehicleMake || ''} ${data.vehicleModel || ''}</div>
+              <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
+            </div>
+            <div class="success-panel-sub" style="margin-top:14px;">This form is configured for Netlify Forms. Check Netlify → Site → Forms to view submissions and set email notifications.</div>
+            <div class="success-panel-actions">
+              <a href="tel:+14104254916">Call Shop</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
+              <button type="button" onclick="showPage('home')">Back Home</button>
+            </div>
+          </div>`;
+        confirmation.classList.add('show');
+      }
       form.reset();
       setMinimumAppointmentDate();
       loadVehicleProfile();
-      showSiteMessage('success', 'Request Sent', 'Your appointment request was submitted successfully through Formspree.');
+      showSiteMessage('success', 'Request Sent', 'Your appointment request was submitted through Netlify Forms.');
     })
-    .catch((error) => {
-      status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
-      showSiteMessage('error', 'Submission Failed', error.message || 'Formspree did not accept the form. Check the endpoint URL.');
+    .catch(() => {
+      if (status) status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
+      showSiteMessage('error', 'Submission Failed', 'Netlify did not accept the form. Make sure the site is deployed on Netlify and forms are enabled.');
     });
 
   return false;
 }
 
-function submitContactFormspree(event) {
+function submitContactNetlify(event) {
   event.preventDefault();
   const form = document.getElementById('contact-form');
   const status = document.getElementById('contact-form-status');
-  const honeypot = form.querySelector('[name="company_website_contact"]');
+  const honeypot = form ? form.querySelector('[name="company_website_contact"]') : null;
 
   if (honeypot && honeypot.value) {
-    status.textContent = 'Submission blocked.';
+    if (status) status.textContent = 'Submission blocked.';
     showSiteMessage('error', 'Submission Blocked', 'This message looked automated, so it was not submitted.');
     return false;
   }
 
-  status.textContent = 'Sending message...';
-  postToFormspree(form)
+  if (status) status.textContent = 'Sending message...';
+
+  postToNetlify(form)
     .then(() => {
-      status.textContent = 'Message sent. Thank you — the shop can follow up soon.';
+      if (status) status.textContent = 'Message sent. Thank you — the shop can follow up soon.';
       form.reset();
-      showSiteMessage('success', 'Message Sent', 'Your question was submitted successfully through Formspree.');
+      showSiteMessage('success', 'Message Sent', 'Your question was submitted through Netlify Forms.');
     })
-    .catch((error) => {
-      status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
-      showSiteMessage('error', 'Message Failed', error.message || 'Formspree did not accept the form. Check the endpoint URL.');
+    .catch(() => {
+      if (status) status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
+      showSiteMessage('error', 'Message Failed', 'Netlify did not accept the form. Make sure the site is deployed on Netlify and forms are enabled.');
     });
 
   return false;
 }
+
 </script>
 </body>
 </html>
