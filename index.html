@@ -1119,35 +1119,35 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </head>
 <body>
 <div class="scroll-progress" id="scroll-progress"></div>
-<button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
+<button aria-label="Back to top" class="back-to-top" id="back-to-top" type="button">↑</button>
 <!-- NAV -->
 <nav>
 <div class="nav-logo" onclick="showPage('home')">
 <div class="nav-logo-top">REVOLUTION <span>MOTOR</span> WORKS</div>
 <div class="nav-logo-sub">Finksburg, Maryland</div>
 </div>
-<button aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu" class="nav-toggle" onclick="toggleMenu()" type="button">
+<button aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu" class="nav-toggle" onclick="toggleMenu()" type="button">
 <span></span><span></span><span></span>
 </button>
 <div class="nav-links" id="nav-menu"><a class="active" id="nav-home" onclick="showPage('home')">Home</a><a id="nav-services" onclick="showPage('services')">Services</a><a id="nav-book" onclick="showPage('book')">Book</a><a id="nav-about" onclick="showPage('about')">About</a><a id="nav-reviews" onclick="showPage('reviews')">Reviews</a><a id="nav-account" onclick="showPage('account')">Account</a><a id="nav-faq" onclick="showPage('faq')">FAQ</a><a id="nav-contact" onclick="showPage('contact')">Contact</a><button class="nav-cta" onclick="showPage('book')" type="button">Schedule Service</button></div>
 </nav>
-<div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()" aria-hidden="true"></div>
+<div aria-hidden="true" class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
 <!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
-  <section class="hero premium-hero">
-    <div class="hero-lines"></div><div class="hero-glow"></div>
-    <div class="hero-content premium-hero-content">
-      <div class="hero-badge"><div class="hero-badge-dot"></div><div class="hero-badge-text">Trusted Auto Repair · Finksburg, MD</div></div>
-      <h1 class="hero-h1">AUTO REPAIR<br><em>WITHOUT THE GUESSWORK</em></h1>
-      <p class="hero-desc premium-hero-desc">Book service, get clear communication, and work with a family-owned shop that explains what your vehicle needs before repairs begin.</p>
-      <div class="hero-rating premium-trust-row"><div class="stars">★★★★★</div><div class="rating-text"><strong>4.9 rating</strong> · 768 Google reviews · 12+ years in business</div></div>
-      <div class="hero-btns"><button class="btn-gold" onclick="showPage('book')">Book Appointment</button><button class="btn-ghost" onclick="showPage('services')">View Services & Pricing</button></div>
-    </div>
-    <aside class="hero-card"><div class="hero-card-label">Quick Actions</div><button onclick="showPage('book')">🗓️ Schedule service</button><button onclick="showPage('contact')">📞 Call or get directions</button><button onclick="showPage('account')">🚗 Save your vehicle</button></aside>
-  </section>
-  <section class="home-strip"><div><strong>4.9★</strong><span>Google Rating</span></div><div><strong>768</strong><span>Reviews</span></div><div><strong>12+</strong><span>Years Serving MD</span></div><div><strong>Mon–Fri</strong><span>8 AM – 5 PM</span></div></section>
-  <section class="home-section home-paths"><div class="eyebrow">Start Here</div><div class="heading">WHAT DO YOU<br>NEED TODAY?</div><div class="home-card-grid"><article class="home-action-card featured"><span>🗓️</span><h3>Book Service</h3><p>Request an appointment with service type, preferred date/time, and vehicle details.</p><button class="btn-gold mini-cta" onclick="showPage('book')">Book Now</button></article><article class="home-action-card"><span>🔧</span><h3>Browse Services</h3><p>See common repairs, diagnostics, maintenance, and transparent sample pricing ranges.</p><button class="btn-ghost mini-cta" onclick="showPage('services')">Services</button></article><article class="home-action-card"><span>📍</span><h3>Find the Shop</h3><p>Call, check hours, view the map, or get directions to 3306 Baltimore Blvd.</p><button class="btn-ghost mini-cta" onclick="showPage('contact')">Contact</button></article></div></section>
-  <section class="home-section home-proof"><div class="proof-copy"><div class="eyebrow">Why Customers Choose Us</div><div class="heading">CLEAR ANSWERS.<br>QUALITY WORK.</div><p>Customers want fast help without being overwhelmed. The homepage now focuses on the three most important actions: book service, understand services, and contact the shop.</p></div><div class="proof-list"><div><strong>Honest diagnostics</strong><span>Know what is wrong before approving repairs.</span></div><div><strong>Family-owned shop</strong><span>Local service instead of chain-store treatment.</span></div><div><strong>Vehicle profiles</strong><span>Returning customers can save vehicle details faster.</span></div></div></section>
+<section class="hero premium-hero">
+<div class="hero-lines"></div><div class="hero-glow"></div>
+<div class="hero-content premium-hero-content">
+<div class="hero-badge"><div class="hero-badge-dot"></div><div class="hero-badge-text">Trusted Auto Repair · Finksburg, MD</div></div>
+<h1 class="hero-h1">AUTO REPAIR<br/><em>WITHOUT THE GUESSWORK</em></h1>
+<p class="hero-desc premium-hero-desc">Book service, get clear communication, and work with a family-owned shop that explains what your vehicle needs before repairs begin.</p>
+<div class="hero-rating premium-trust-row"><div class="stars">★★★★★</div><div class="rating-text"><strong>4.9 rating</strong> · 768 Google reviews · 12+ years in business</div></div>
+<div class="hero-btns"><button class="btn-gold" onclick="showPage('book')">Book Appointment</button><button class="btn-ghost" onclick="showPage('services')">View Services &amp; Pricing</button></div>
+</div>
+<aside class="hero-card"><div class="hero-card-label">Quick Actions</div><button onclick="showPage('book')">🗓️ Schedule service</button><button onclick="showPage('contact')">📞 Call or get directions</button><button onclick="showPage('account')">🚗 Save your vehicle</button></aside>
+</section>
+<section class="home-strip"><div><strong>4.9★</strong><span>Google Rating</span></div><div><strong>768</strong><span>Reviews</span></div><div><strong>12+</strong><span>Years Serving MD</span></div><div><strong>Mon–Fri</strong><span>8 AM – 5 PM</span></div></section>
+<section class="home-section home-paths"><div class="eyebrow">Start Here</div><div class="heading">WHAT DO YOU<br/>NEED TODAY?</div><div class="home-card-grid"><article class="home-action-card featured"><span>🗓️</span><h3>Book Service</h3><p>Request an appointment with service type, preferred date/time, and vehicle details.</p><button class="btn-gold mini-cta" onclick="showPage('book')">Book Now</button></article><article class="home-action-card"><span>🔧</span><h3>Browse Services</h3><p>See common repairs, diagnostics, maintenance, and transparent sample pricing ranges.</p><button class="btn-ghost mini-cta" onclick="showPage('services')">Services</button></article><article class="home-action-card"><span>📍</span><h3>Find the Shop</h3><p>Call, check hours, view the map, or get directions to 3306 Baltimore Blvd.</p><button class="btn-ghost mini-cta" onclick="showPage('contact')">Contact</button></article></div></section>
+<section class="home-section home-proof"><div class="proof-copy"><div class="eyebrow">Why Customers Choose Us</div><div class="heading">CLEAR ANSWERS.<br/>QUALITY WORK.</div><p>Customers want fast help without being overwhelmed. The homepage now focuses on the three most important actions: book service, understand services, and contact the shop.</p></div><div class="proof-list"><div><strong>Honest diagnostics</strong><span>Know what is wrong before approving repairs.</span></div><div><strong>Family-owned shop</strong><span>Local service instead of chain-store treatment.</span></div><div><strong>Vehicle profiles</strong><span>Returning customers can save vehicle details faster.</span></div></div></section>
 </div>
 <!-- ══ SERVICES ══ -->
 <div class="page" id="page-services">
@@ -1172,13 +1172,12 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div>
 </div><div class="page" id="page-book"><div class="page-header"><div class="eyebrow">Schedule Service</div><div class="heading" style="margin-bottom:0">BOOK APPOINTMENT</div><p>Request service with your contact info, preferred date/time, and vehicle details. This keeps booking separate from the general contact page.</p></div><div class="booking-page-panel">
 <div class="eyebrow">Book Appointment</div>
-<div class="heading" style="font-size:2.8rem; margin-bottom:24px;">SCHEDULE<br/>SERVICE</div>
+<div class="heading" style="font-size:2.8rem; margin-bottom:24px;">SCHEDULE<br>SERVICE</br></div>
 <div class="booking-intro">
 <strong>Fast appointment request:</strong> choose the service, preferred date/time, and vehicle information. A staff member can confirm the exact appointment after reviewing the request.
 </div>
-<form autocomplete="on" class="booking-form" id="appointment-form" name="appointment" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="company_website" onsubmit="return submitAppointment(event)">
-<input type="hidden" name="form-name" value="appointment"/>
-<input autocomplete="off" class="honeypot" name="company_website" tabindex="-1" type="text"/>
+<form action="/thank-you.html" autocomplete="on" class="booking-form" data-netlify="true" data-netlify-honeypot="company_website" id="appointment-form" method="POST" name="appointment" onsubmit="return submitAppointmentNetlify(event)"><input name="form-name" type="hidden" value="appointment"/>
+<input autocomplete="off" class="honeypot honeypot" name="company_website" tabindex="-1" type="text"/>
 <div class="form-row">
 <div>
 <label class="form-label" for="first-name">First Name</label>
@@ -1288,7 +1287,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div>
 <div class="about-right">
 <div class="eyebrow">Our Story</div>
-<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br/>REVOLUTION<br/>MOTOR WORKS</div>
+<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</br></br></div>
 <p>Revolution Motor Works was built on a simple idea: <strong>every customer deserves honest, high-quality auto repair at a fair price.</strong> We're a family-owned shop located in Finksburg, Maryland, proud to serve the Pikesville area and surrounding communities.</p>
 <p>Over the past 12+ years, we've earned a reputation for doing the work right — the first time. Our team brings deep expertise across all vehicle makes and models, from everyday commuters to performance vehicles. We invest in proper tools and training so you get dealer-level knowledge without the dealer-level markup.</p>
 <p>With nearly 800 five-star Google reviews, our track record speaks for itself. But we never take that trust for granted — every car that comes through our door gets our full attention and care.</p>
@@ -1548,22 +1547,30 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div>
 </div>
 </div>
-<div class="contact-right clean-contact-card">
-<div class="eyebrow">Quick Actions</div>
-<div class="heading" style="font-size:2.8rem; margin-bottom:30px;">CALL OR<br/>VISIT</div>
-<p class="booking-intro"><strong>Need service?</strong> Use the booking page for appointments. Use this page for phone, hours, directions, and quick questions.</p>
-<div class="contact-action-stack"><a class="btn-gold" href="tel:4104254916" style="text-decoration:none; text-align:center; clip-path:none;">Call Now</a><a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" style="text-decoration:none; text-align:center; clip-path:none;" target="_blank">Get Directions</a><button class="btn-ghost" onclick="showPage('book')" style="clip-path:none;" type="button">Book Appointment</button></div>
+<div class="contact-right clean-contact-card"><div class="eyebrow">Quick Actions</div><div class="heading" style="font-size:2.8rem; margin-bottom:30px;">CALL OR<br/>VISIT</div><p class="booking-intro"><strong>Need service?</strong> Use the booking page for appointments. Use this page for phone, hours, directions, and location details.</p><div class="contact-action-stack"><a class="btn-gold" href="tel:4104254916" style="text-decoration:none; text-align:center; clip-path:none;">Call Now</a><a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" style="text-decoration:none; text-align:center; clip-path:none;" target="_blank">Get Directions</a><button class="btn-ghost" onclick="showPage('book')" style="clip-path:none;" type="button">Book Appointment</button></div>
 <div style="height:32px"></div>
 <div class="eyebrow">Quick Question</div>
-<form class="booking-form" id="contact-form" name="contact" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="company_website_contact" onsubmit="return submitContactNetlify(event)">
-<input type="hidden" name="form-name" value="contact"/>
+<form action="/thank-you.html" class="booking-form" data-netlify="true" data-netlify-honeypot="company_website_contact" id="contact-form" method="POST" name="contact" onsubmit="return submitContactNetlify(event)">
+<input name="form-name" type="hidden" value="contact"/>
 <input autocomplete="off" class="honeypot" name="company_website_contact" tabindex="-1" type="text"/>
 <div class="form-row">
-<div><label class="form-label" for="contact-name">Name</label><input autocomplete="name" id="contact-name" name="name" placeholder="John Smith" required type="text"/></div>
-<div><label class="form-label" for="contact-phone">Phone</label><input autocomplete="tel" id="contact-phone" name="phone" placeholder="(410) 000-0000" type="tel"/></div>
+<div>
+<label class="form-label" for="contact-name">Name</label>
+<input autocomplete="name" id="contact-name" name="name" placeholder="John Smith" required="" type="text"/>
 </div>
-<div class="form-group"><label class="form-label" for="contact-email">Email</label><input autocomplete="email" id="contact-email" name="email" placeholder="you@email.com" required type="email"/></div>
-<div class="form-group"><label class="form-label" for="contact-message">Message</label><textarea id="contact-message" name="message" placeholder="Ask a question or describe what you need help with..." required></textarea></div>
+<div>
+<label class="form-label" for="contact-phone">Phone</label>
+<input autocomplete="tel" id="contact-phone" name="phone" placeholder="(410) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="contact-email">Email</label>
+<input autocomplete="email" id="contact-email" name="email" placeholder="you@email.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="contact-message">Message</label>
+<textarea id="contact-message" name="message" placeholder="Ask a question or describe what you need help with..." required=""></textarea>
+</div>
 <button class="submit-btn" type="submit">Send Question →</button>
 <div aria-live="polite" class="form-status" id="contact-form-status"></div>
 </form>
@@ -1779,29 +1786,6 @@ function setMinimumAppointmentDate() {
   dateInput.min = today.toISOString().split('T')[0];
 }
 
-function encodeNetlifyFormData(form, extra = {}) {
-  const formData = new FormData(form);
-  Object.entries(extra).forEach(([key, value]) => formData.set(key, value));
-  return new URLSearchParams(formData).toString();
-}
-
-async function postToNetlifyForms(form, extra = {}) {
-  // Netlify Forms works after this site is deployed on Netlify.
-  // In local preview or GitHub Pages, this request may not be accepted, so the UI still saves a demo copy in localStorage.
-  if (window.location.protocol === 'file:') return { ok: false, localOnly: true };
-  try {
-    const response = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeNetlifyFormData(form, extra)
-    });
-    return { ok: response.ok, status: response.status };
-  } catch (error) {
-    console.warn('Netlify Forms submit failed in preview/local mode:', error);
-    return { ok: false, error };
-  }
-}
-
 function submitAppointment(event) {
   event.preventDefault();
   const form = document.getElementById('appointment-form');
@@ -1827,12 +1811,10 @@ function submitAppointment(event) {
 
   status.textContent = 'Checking appointment request...';
 
-  const finish = async (token = '') => {
+  const finish = (token = '') => {
     const data = Object.fromEntries(new FormData(form));
     data.recaptchaToken = token;
     data.submittedAt = new Date().toISOString();
-    status.textContent = 'Sending appointment request...';
-    await postToNetlifyForms(form, { recaptchaToken: token, submittedAt: data.submittedAt });
 
     const savedAppointments = JSON.parse(localStorage.getItem('appointmentRequests') || '[]');
     savedAppointments.push(data);
@@ -1856,7 +1838,7 @@ function submitAppointment(event) {
           <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear} ${data.vehicleMake} ${data.vehicleModel}</div>
           <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
         </div>
-        <div class="success-panel-sub" style="margin-top:14px;">Live setup: when this file is deployed on Netlify, this request is submitted to Netlify Forms. A browser copy is also saved for this demo preview.</div>
+        <div class="success-panel-sub" style="margin-top:14px;">Demo note: on GitHub Pages this saves in the browser. For the live client site, connect this form to a backend, Formspree, Netlify Forms, Firebase, or a shop CRM so the business receives the request.</div>
         <div class="success-panel-actions">
           <a href="tel:+14104254916">Call Shop</a>
           <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
@@ -1907,35 +1889,6 @@ function loadVehicleProfile() {
   const fields = {'profile-year':vehicle.year,'profile-make':vehicle.make,'profile-model':vehicle.model,'profile-mileage':vehicle.mileage,'profile-plate':vehicle.plate,'profile-vin':vehicle.vin,'profile-notes':vehicle.notes};
   Object.entries(fields).forEach(([id,value]) => { const input=document.getElementById(id); if(input && value) input.value=value; });
   renderSavedVehicleCard(vehicle);
-}
-
-function submitContactNetlify(event) {
-  event.preventDefault();
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('contact-form-status');
-  const honeypot = form.querySelector('[name="company_website_contact"]');
-
-  if (honeypot && honeypot.value) {
-    status.textContent = 'Submission blocked.';
-    showSiteMessage('error', 'Submission Blocked', 'This message looked automated, so it was not submitted.');
-    return false;
-  }
-
-  status.textContent = 'Sending message...';
-  const data = Object.fromEntries(new FormData(form));
-  data.submittedAt = new Date().toISOString();
-
-  postToNetlifyForms(form, { submittedAt: data.submittedAt }).then(() => {
-    const savedMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-    savedMessages.push(data);
-    localStorage.setItem('contactMessages', JSON.stringify(savedMessages));
-
-    status.innerHTML = '<strong>Message received.</strong> When deployed on Netlify, this will appear in your Netlify Forms dashboard.';
-    status.classList.add('show');
-    showSiteMessage('success', 'Message Received', 'Your message was submitted. The shop can follow up by phone or email.');
-    form.reset();
-  });
-  return false;
 }
 
 function saveVehicleProfile(event) {
@@ -2064,6 +2017,118 @@ window.addEventListener('DOMContentLoaded', initFinalPolish);
     "ratingValue": "4.9",
     "reviewCount": "768"
   }
+}
+
+
+/* Netlify Forms helpers — fixed version */
+function encodeFormData(form) {
+  return new URLSearchParams(new FormData(form)).toString();
+}
+
+async function postToNetlify(form) {
+  const response = await fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encodeFormData(form)
+  });
+  if (!response.ok) throw new Error('Form submission failed');
+  return response;
+}
+
+function submitAppointmentNetlify(event) {
+  event.preventDefault();
+  const form = document.getElementById('appointment-form');
+  const status = document.getElementById('form-status');
+  const confirmation = document.getElementById('appointment-confirmation');
+  const honeypot = form.querySelector('[name="company_website"]');
+
+  confirmation.classList.remove('show');
+  confirmation.innerHTML = '';
+
+  if (honeypot && honeypot.value) {
+    status.textContent = 'Submission blocked.';
+    showSiteMessage('error', 'Submission Blocked', 'This request looked automated, so it was not submitted.');
+    return false;
+  }
+
+  const dateValue = document.getElementById('preferred-date').value;
+  if (isWeekendDate(dateValue)) {
+    status.textContent = 'Please choose a weekday. Revolution Motor Works is closed Saturday and Sunday.';
+    showSiteMessage('error', 'Choose a Weekday', 'Please select Monday through Friday.');
+    return false;
+  }
+
+  const data = Object.fromEntries(new FormData(form));
+  status.textContent = 'Sending appointment request...';
+
+  postToNetlify(form)
+    .then(() => {
+      const savedAppointments = JSON.parse(localStorage.getItem('appointmentRequests') || '[]');
+      savedAppointments.push({ ...data, submittedAt: new Date().toISOString() });
+      localStorage.setItem('appointmentRequests', JSON.stringify(savedAppointments));
+
+      status.textContent = '';
+      confirmation.innerHTML = `
+        <div class="success-panel">
+          <div class="success-panel-head">
+            <div class="success-panel-icon">✓</div>
+            <div>
+              <div class="success-panel-title">Appointment Request Sent</div>
+              <div class="success-panel-sub">Thanks, ${data.firstName}. Your request was submitted and is ready for the shop to review.</div>
+            </div>
+          </div>
+          <div class="success-panel-grid">
+            <div class="success-panel-item"><strong>Service</strong>${data.service || 'Service request'}</div>
+            <div class="success-panel-item"><strong>Preferred Time</strong>${data.preferredDate || ''} at ${data.preferredTime || ''}</div>
+            <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear || ''} ${data.vehicleMake || ''} ${data.vehicleModel || ''}</div>
+            <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
+          </div>
+          <div class="success-panel-sub" style="margin-top:14px;">This form is configured for Netlify Forms. Check Netlify → Site → Forms to view submissions.</div>
+          <div class="success-panel-actions">
+            <a href="tel:+14104254916">Call Shop</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
+            <button type="button" onclick="showPage('home')">Back Home</button>
+          </div>
+        </div>`;
+      confirmation.classList.add('show');
+      form.reset();
+      setMinimumAppointmentDate();
+      loadVehicleProfile();
+      showSiteMessage('success', 'Request Sent', 'Your appointment request was submitted successfully.');
+    })
+    .catch(() => {
+      status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
+      showSiteMessage('error', 'Submission Failed', 'Netlify did not accept the form. Make sure the site is deployed on Netlify and forms are enabled.');
+    });
+
+  return false;
+}
+
+function submitContactNetlify(event) {
+  event.preventDefault();
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-form-status');
+  const honeypot = form.querySelector('[name="company_website_contact"]');
+
+  if (honeypot && honeypot.value) {
+    status.textContent = 'Submission blocked.';
+    showSiteMessage('error', 'Submission Blocked', 'This message looked automated, so it was not submitted.');
+    return false;
+  }
+
+  status.textContent = 'Sending message...';
+  postToNetlify(form)
+    .then(() => {
+      status.textContent = 'Message sent. Thank you — the shop can follow up soon.';
+      form.reset();
+      showSiteMessage('success', 'Message Sent', 'Your question was submitted successfully.');
+    })
+    .catch(() => {
+      status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
+      showSiteMessage('error', 'Message Failed', 'Netlify did not accept the form. Make sure the site is deployed on Netlify and forms are enabled.');
+    });
+
+  return false;
 }
 </script>
 </body>
