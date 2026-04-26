@@ -1482,7 +1482,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div>
 <div class="about-right">
 <div class="eyebrow">Our Story</div>
-<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</br></br></div>
+<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</div>
 <p>Revolution Motor Works was built on a simple idea: <strong>every customer deserves honest, high-quality auto repair at a fair price.</strong> We're a family-owned shop located in Finksburg, Maryland, proud to serve the Pikesville area and surrounding communities.</p>
 <p>Over the past 12+ years, we've earned a reputation for doing the work right — the first time. Our team brings deep expertise across all vehicle makes and models, from everyday commuters to performance vehicles. We invest in proper tools and training so you get dealer-level knowledge without the dealer-level markup.</p>
 <p>With nearly 800 five-star Google reviews, our track record speaks for itself. But we never take that trust for granted — every car that comes through our door gets our full attention and care.</p>
@@ -1512,24 +1512,24 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <a class="btn-gold" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none;" target="_blank">Read Live Google Reviews</a>
 <a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+write+a+review" rel="noopener" style="text-decoration:none;" target="_blank">Leave a Review</a>
 </div>
-<p class="review-note">These are real Google review excerpts provided from the shop’s public Google profile screenshots. The main review automatically rotates, and visitors can also click through to read live reviews.</p>
+
 <div class="real-review-carousel" aria-label="Rotating featured Google reviews">
   <div class="real-review-top">
     <div>
       <div class="real-review-label">Featured Google Review</div>
-      <div class="real-review-source">One full customer review at a time · rotates automatically</div>
+      <div class="real-review-source">Real customer feedback from Google</div>
     </div>
     <a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none; clip-path:none; padding:12px 22px;" target="_blank">Check Shop Reviews</a>
   </div>
   <div class="real-review-card-main" id="real-review-card">
     <div class="real-review-kicker">Google Verified Feedback</div>
     <div class="real-review-stars" id="real-review-stars">★★★★★</div>
-    <p class="real-review-text" id="real-review-text"></p>
+    <p class="real-review-text" id="real-review-text">“I had a great experience getting my tire pressure sensors replaced. From start to finish, the customer service was friendly and professional. Especially J.R. took the time to clearly explain what needed to be done, why it was necessary, and how the sensors work, which I really appreciated. Also I was provided a detailed price breakdown up front, so there were no surprises, and everything was explained in an easy to understand way and my car was ready when promised. I’ll definitely be coming back and would highly recommend them to anyone looking for reliable, trustworthy service.”</p>
     <div class="real-review-person">
       <div class="review-avatar" id="real-review-avatar">B</div>
       <div>
         <div class="review-name" id="real-review-name">Bailey</div>
-        <div class="review-meta" id="real-review-meta">5-star Google review</div>
+        <div class="review-meta" id="real-review-meta">5-star Google review · 4 months ago</div>
       </div>
     </div>
   </div>
@@ -1538,7 +1538,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
       <button class="review-arrow" type="button" onclick="changeReview(-1)" aria-label="Previous review">‹</button>
       <button class="review-arrow" type="button" onclick="changeReview(1)" aria-label="Next review">›</button>
     </div>
-    <div class="review-dots" id="review-dots" aria-label="Review carousel dots"></div>
+    <div class="review-dots" id="review-dots" aria-label="Review carousel dots"><button class="review-dot active" type="button" aria-label="Show review 1"></button><button class="review-dot" type="button" aria-label="Show review 2"></button><button class="review-dot" type="button" aria-label="Show review 3"></button><button class="review-dot" type="button" aria-label="Show review 4"></button><button class="review-dot" type="button" aria-label="Show review 5"></button></div>
     <a class="review-live-link" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" target="_blank">Read more on Google →</a>
   </div>
   <div class="real-review-progress" aria-hidden="true"></div>
@@ -1551,15 +1551,15 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div><div class="photo-section" id="shop-photos">
 <div class="eyebrow">Shop Photos</div>
 <div class="heading">SEE THE SHOP<br/>BEFORE YOU VISIT</div>
-<p class="photo-intro">Real photos make an auto repair website feel much more trustworthy. This section is built as a ready-to-use gallery: replace the placeholder blocks with actual photos of the garage, technicians, front desk, waiting area, and finished work.</p>
+<p class="photo-intro">See the shop, the team, and completed work before you visit. Real local photos help customers know what to expect and feel confident booking service.</p>
 <div class="photo-grid">
-<div class="photo-card" data-photo-label="Garage Bay">
+<div class="photo-card" data-photo-label="Shop Photo">
 <div class="photo-caption"><strong>Clean Service Bays</strong><span>Show customers where their vehicle will be worked on and make the shop feel professional.</span></div>
 </div>
-<div class="photo-card" data-photo-label="Technicians">
+<div class="photo-card" data-photo-label="Team Photo">
 <div class="photo-caption"><strong>Meet the Team</strong><span>Real mechanic photos help visitors feel like they know who is handling their car.</span></div>
 </div>
-<div class="photo-card" data-photo-label="Front Desk">
+<div class="photo-card" data-photo-label="Customer Area">
 <div class="photo-caption"><strong>Easy Check-In</strong><span>Show the customer entrance, office, or waiting area so first-time visitors know what to expect.</span></div>
 </div>
 <div aria-label="Before and after repair photo placeholder" class="before-after-card">
@@ -2295,11 +2295,16 @@ function restartReviewRotation() {
   window.clearInterval(reviewTimer);
   reviewTimer = window.setInterval(() => changeReview(1), 7500);
 }
-window.addEventListener('DOMContentLoaded', () => {
+function initRealReviewCarousel() {
   buildReviewDots();
   renderRealReview(0);
   restartReviewRotation();
-});
+}
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initRealReviewCarousel);
+} else {
+  initRealReviewCarousel();
+}
 
 
 /* Netlify Forms helpers — fixed version */
