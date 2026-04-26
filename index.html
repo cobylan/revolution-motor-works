@@ -1313,6 +1313,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </script>
 </head>
 <body>
+<div class="site-toast-wrap" id="site-toast-wrap" aria-live="polite"></div>
 <div class="scroll-progress" id="scroll-progress"></div>
 <button aria-label="Back to top" class="back-to-top" id="back-to-top" type="button">↑</button>
 <!-- NAV -->
@@ -1371,7 +1372,9 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <div class="booking-intro">
 <strong>Fast appointment request:</strong> choose the service, preferred date/time, and vehicle information. A staff member can confirm the exact appointment after reviewing the request.
 </div>
-<form action="/thank-you.html" autocomplete="on" class="booking-form" data-netlify="true" data-netlify-honeypot="company_website" id="appointment-form" method="POST" name="appointment" onsubmit="return submitAppointmentNetlify(event)"><input name="form-name" type="hidden" value="appointment"/>
+<form action="https://formspree.io/f/xrervpkr" autocomplete="on" class="booking-form" id="appointment-form" method="POST" name="appointment" onsubmit="return submitAppointmentFormspree(event)">
+<input name="formType" type="hidden" value="Appointment Request"/>
+<input name="_subject" type="hidden" value="New appointment request from Revolution Motor Works website"/>
 <input autocomplete="off" class="honeypot honeypot" name="company_website" tabindex="-1" type="text"/>
 <div class="form-row">
 <div>
@@ -1482,7 +1485,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div>
 <div class="about-right">
 <div class="eyebrow">Our Story</div>
-<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</div>
+<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</br></br></div>
 <p>Revolution Motor Works was built on a simple idea: <strong>every customer deserves honest, high-quality auto repair at a fair price.</strong> We're a family-owned shop located in Finksburg, Maryland, proud to serve the Pikesville area and surrounding communities.</p>
 <p>Over the past 12+ years, we've earned a reputation for doing the work right — the first time. Our team brings deep expertise across all vehicle makes and models, from everyday commuters to performance vehicles. We invest in proper tools and training so you get dealer-level knowledge without the dealer-level markup.</p>
 <p>With nearly 800 five-star Google reviews, our track record speaks for itself. But we never take that trust for granted — every car that comes through our door gets our full attention and care.</p>
@@ -1512,24 +1515,24 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <a class="btn-gold" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none;" target="_blank">Read Live Google Reviews</a>
 <a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+write+a+review" rel="noopener" style="text-decoration:none;" target="_blank">Leave a Review</a>
 </div>
-
+<p class="review-note">These are real Google review excerpts provided from the shop’s public Google profile screenshots. The main review automatically rotates, and visitors can also click through to read live reviews.</p>
 <div class="real-review-carousel" aria-label="Rotating featured Google reviews">
   <div class="real-review-top">
     <div>
       <div class="real-review-label">Featured Google Review</div>
-      <div class="real-review-source">Real customer feedback from Google</div>
+      <div class="real-review-source">One full customer review at a time · rotates automatically</div>
     </div>
     <a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none; clip-path:none; padding:12px 22px;" target="_blank">Check Shop Reviews</a>
   </div>
   <div class="real-review-card-main" id="real-review-card">
     <div class="real-review-kicker">Google Verified Feedback</div>
     <div class="real-review-stars" id="real-review-stars">★★★★★</div>
-    <p class="real-review-text" id="real-review-text">“I had a great experience getting my tire pressure sensors replaced. From start to finish, the customer service was friendly and professional. Especially J.R. took the time to clearly explain what needed to be done, why it was necessary, and how the sensors work, which I really appreciated. Also I was provided a detailed price breakdown up front, so there were no surprises, and everything was explained in an easy to understand way and my car was ready when promised. I’ll definitely be coming back and would highly recommend them to anyone looking for reliable, trustworthy service.”</p>
+    <p class="real-review-text" id="real-review-text"></p>
     <div class="real-review-person">
       <div class="review-avatar" id="real-review-avatar">B</div>
       <div>
         <div class="review-name" id="real-review-name">Bailey</div>
-        <div class="review-meta" id="real-review-meta">5-star Google review · 4 months ago</div>
+        <div class="review-meta" id="real-review-meta">5-star Google review</div>
       </div>
     </div>
   </div>
@@ -1538,7 +1541,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
       <button class="review-arrow" type="button" onclick="changeReview(-1)" aria-label="Previous review">‹</button>
       <button class="review-arrow" type="button" onclick="changeReview(1)" aria-label="Next review">›</button>
     </div>
-    <div class="review-dots" id="review-dots" aria-label="Review carousel dots"><button class="review-dot active" type="button" aria-label="Show review 1"></button><button class="review-dot" type="button" aria-label="Show review 2"></button><button class="review-dot" type="button" aria-label="Show review 3"></button><button class="review-dot" type="button" aria-label="Show review 4"></button><button class="review-dot" type="button" aria-label="Show review 5"></button></div>
+    <div class="review-dots" id="review-dots" aria-label="Review carousel dots"></div>
     <a class="review-live-link" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" target="_blank">Read more on Google →</a>
   </div>
   <div class="real-review-progress" aria-hidden="true"></div>
@@ -1551,15 +1554,15 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 </div><div class="photo-section" id="shop-photos">
 <div class="eyebrow">Shop Photos</div>
 <div class="heading">SEE THE SHOP<br/>BEFORE YOU VISIT</div>
-<p class="photo-intro">See the shop, the team, and completed work before you visit. Real local photos help customers know what to expect and feel confident booking service.</p>
+<p class="photo-intro">Real photos make an auto repair website feel much more trustworthy. This section is built as a ready-to-use gallery: replace the placeholder blocks with actual photos of the garage, technicians, front desk, waiting area, and finished work.</p>
 <div class="photo-grid">
-<div class="photo-card" data-photo-label="Shop Photo">
+<div class="photo-card" data-photo-label="Garage Bay">
 <div class="photo-caption"><strong>Clean Service Bays</strong><span>Show customers where their vehicle will be worked on and make the shop feel professional.</span></div>
 </div>
-<div class="photo-card" data-photo-label="Team Photo">
+<div class="photo-card" data-photo-label="Technicians">
 <div class="photo-caption"><strong>Meet the Team</strong><span>Real mechanic photos help visitors feel like they know who is handling their car.</span></div>
 </div>
-<div class="photo-card" data-photo-label="Customer Area">
+<div class="photo-card" data-photo-label="Front Desk">
 <div class="photo-caption"><strong>Easy Check-In</strong><span>Show the customer entrance, office, or waiting area so first-time visitors know what to expect.</span></div>
 </div>
 <div aria-label="Before and after repair photo placeholder" class="before-after-card">
@@ -1745,8 +1748,9 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <div class="contact-right clean-contact-card"><div class="eyebrow">Quick Actions</div><div class="heading" style="font-size:2.8rem; margin-bottom:30px;">CALL OR<br/>VISIT</div><p class="booking-intro"><strong>Need service?</strong> Use the booking page for appointments. Use this page for phone, hours, directions, and location details.</p><div class="contact-action-stack"><a class="btn-gold" href="tel:4104254916" style="text-decoration:none; text-align:center; clip-path:none;">Call Now</a><a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" style="text-decoration:none; text-align:center; clip-path:none;" target="_blank">Get Directions</a><button class="btn-ghost" onclick="showPage('book')" style="clip-path:none;" type="button">Book Appointment</button></div>
 <div style="height:32px"></div>
 <div class="eyebrow">Quick Question</div>
-<form action="/thank-you.html" class="booking-form" data-netlify="true" data-netlify-honeypot="company_website_contact" id="contact-form" method="POST" name="contact" onsubmit="return submitContactNetlify(event)">
-<input name="form-name" type="hidden" value="contact"/>
+<form action="https://formspree.io/f/xrervpkr" class="booking-form" id="contact-form" method="POST" name="contact" onsubmit="return submitContactFormspree(event)">
+<input name="formType" type="hidden" value="Contact Question"/>
+<input name="_subject" type="hidden" value="New question from Revolution Motor Works website"/>
 <input autocomplete="off" class="honeypot" name="company_website_contact" tabindex="-1" type="text"/>
 <div class="form-row">
 <div>
@@ -2295,34 +2299,37 @@ function restartReviewRotation() {
   window.clearInterval(reviewTimer);
   reviewTimer = window.setInterval(() => changeReview(1), 7500);
 }
-function initRealReviewCarousel() {
+window.addEventListener('DOMContentLoaded', () => {
   buildReviewDots();
   renderRealReview(0);
   restartReviewRotation();
-}
-if (document.readyState === 'loading') {
-  window.addEventListener('DOMContentLoaded', initRealReviewCarousel);
-} else {
-  initRealReviewCarousel();
-}
+});
 
 
-/* Netlify Forms helpers — fixed version */
-function encodeFormData(form) {
-  return new URLSearchParams(new FormData(form)).toString();
-}
+/* Formspree helpers — endpoint connected */
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrervpkr';
 
-async function postToNetlify(form) {
-  const response = await fetch('/', {
+async function postToFormspree(form) {
+  const formData = new FormData(form);
+  const response = await fetch(FORMSPREE_ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encodeFormData(form)
+    headers: { 'Accept': 'application/json' },
+    body: formData
   });
-  if (!response.ok) throw new Error('Form submission failed');
+  if (!response.ok) {
+    let message = 'Form submission failed';
+    try {
+      const errorData = await response.json();
+      if (errorData && errorData.errors && errorData.errors.length) {
+        message = errorData.errors.map(error => error.message).join(', ');
+      }
+    } catch (error) {}
+    throw new Error(message);
+  }
   return response;
 }
 
-function submitAppointmentNetlify(event) {
+function submitAppointmentFormspree(event) {
   event.preventDefault();
   const form = document.getElementById('appointment-form');
   const status = document.getElementById('form-status');
@@ -2348,7 +2355,7 @@ function submitAppointmentNetlify(event) {
   const data = Object.fromEntries(new FormData(form));
   status.textContent = 'Sending appointment request...';
 
-  postToNetlify(form)
+  postToFormspree(form)
     .then(() => {
       const savedAppointments = JSON.parse(localStorage.getItem('appointmentRequests') || '[]');
       savedAppointments.push({ ...data, submittedAt: new Date().toISOString() });
@@ -2361,7 +2368,7 @@ function submitAppointmentNetlify(event) {
             <div class="success-panel-icon">✓</div>
             <div>
               <div class="success-panel-title">Appointment Request Sent</div>
-              <div class="success-panel-sub">Thanks, ${data.firstName}. Your request was submitted and is ready for the shop to review.</div>
+              <div class="success-panel-sub">Thanks, ${data.firstName || 'there'}. Your request was emailed to the shop through Formspree.</div>
             </div>
           </div>
           <div class="success-panel-grid">
@@ -2370,7 +2377,7 @@ function submitAppointmentNetlify(event) {
             <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear || ''} ${data.vehicleMake || ''} ${data.vehicleModel || ''}</div>
             <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
           </div>
-          <div class="success-panel-sub" style="margin-top:14px;">This form is configured for Netlify Forms. Check Netlify → Site → Forms to view submissions.</div>
+          <div class="success-panel-sub" style="margin-top:14px;">This form is connected to Formspree. Check the recipient email inbox and the Formspree dashboard for submissions.</div>
           <div class="success-panel-actions">
             <a href="tel:+14104254916">Call Shop</a>
             <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
@@ -2381,17 +2388,17 @@ function submitAppointmentNetlify(event) {
       form.reset();
       setMinimumAppointmentDate();
       loadVehicleProfile();
-      showSiteMessage('success', 'Request Sent', 'Your appointment request was submitted successfully.');
+      showSiteMessage('success', 'Request Sent', 'Your appointment request was submitted successfully through Formspree.');
     })
-    .catch(() => {
+    .catch((error) => {
       status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
-      showSiteMessage('error', 'Submission Failed', 'Netlify did not accept the form. Make sure the site is deployed on Netlify and forms are enabled.');
+      showSiteMessage('error', 'Submission Failed', error.message || 'Formspree did not accept the form. Check the endpoint URL.');
     });
 
   return false;
 }
 
-function submitContactNetlify(event) {
+function submitContactFormspree(event) {
   event.preventDefault();
   const form = document.getElementById('contact-form');
   const status = document.getElementById('contact-form-status');
@@ -2404,15 +2411,15 @@ function submitContactNetlify(event) {
   }
 
   status.textContent = 'Sending message...';
-  postToNetlify(form)
+  postToFormspree(form)
     .then(() => {
       status.textContent = 'Message sent. Thank you — the shop can follow up soon.';
       form.reset();
-      showSiteMessage('success', 'Message Sent', 'Your question was submitted successfully.');
+      showSiteMessage('success', 'Message Sent', 'Your question was submitted successfully through Formspree.');
     })
-    .catch(() => {
+    .catch((error) => {
       status.textContent = 'There was a problem sending the form. Please call the shop or try again.';
-      showSiteMessage('error', 'Message Failed', 'Netlify did not accept the form. Make sure the site is deployed on Netlify and forms are enabled.');
+      showSiteMessage('error', 'Message Failed', error.message || 'Formspree did not accept the form. Check the endpoint URL.');
     });
 
   return false;
