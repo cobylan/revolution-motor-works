@@ -1113,6 +1113,201 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
   .page-header { padding-top: 58px !important; padding-bottom: 44px !important; }
 }
 
+
+
+/* Real Google review carousel */
+.real-review-carousel {
+  margin-top: 36px;
+  background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(255,255,255,.03));
+  border: 1px solid rgba(232,160,32,.25);
+  border-radius: 28px;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.real-review-carousel::before {
+  content: '';
+  position: absolute;
+  inset: -80px auto auto -80px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(232,160,32,.22), transparent 70%);
+  pointer-events: none;
+}
+.real-review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.real-review-label {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: .8rem;
+}
+.real-review-source {
+  color: var(--muted);
+  font-size: .88rem;
+}
+.real-review-card-main {
+  position: relative;
+  z-index: 1;
+  min-height: 390px;
+  transition: opacity .25s ease, transform .25s ease;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 24px;
+  padding: 28px;
+}
+.real-review-card-main.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.real-review-stars {
+  color: var(--gold);
+  font-size: 1.35rem;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+}
+.real-review-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--black);
+  background: var(--gold);
+  padding: 7px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-size: .72rem;
+  margin-bottom: 18px;
+}
+.real-review-text {
+  color: #d7d7d0;
+  font-size: clamp(1rem, 1.55vw, 1.2rem);
+  line-height: 1.75;
+  max-width: 1050px;
+  margin-bottom: 26px;
+  font-weight: 300;
+}
+.real-review-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--black);
+  display: grid;
+  place-items: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.review-name {
+  color: var(--white);
+  font-weight: 700;
+}
+.review-meta {
+  color: var(--muted);
+  font-size: .9rem;
+  margin-top: 3px;
+}
+.real-review-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  position: relative;
+  z-index: 1;
+}
+.review-arrow-group {
+  display: flex;
+  gap: 10px;
+}
+.review-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(0,0,0,.2);
+  color: var(--light);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.review-arrow:hover { border-color: var(--gold); color: var(--white); }
+.review-dots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.review-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255,255,255,.22);
+  cursor: pointer;
+}
+.review-dot.active { background: var(--gold); }
+.real-review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.real-review-mini {
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 20px;
+}
+.real-review-mini .mini-stars { color: var(--gold); margin-bottom: 10px; letter-spacing: 2px; }
+.real-review-mini p { color: #a9a9a0; line-height: 1.65; font-size: .92rem; }
+.real-review-mini strong { color: var(--white); display: block; margin-top: 14px; font-family: 'Rajdhani', sans-serif; letter-spacing: 1px; }
+
+.real-review-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--gold);
+  width: 0%;
+  animation: reviewProgress 7.5s linear infinite;
+}
+@keyframes reviewProgress { from { width: 0%; } to { width: 100%; } }
+.real-review-carousel:hover .real-review-progress { animation-play-state: paused; }
+.review-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.review-live-link:hover { color: var(--gold-light); }
+
+@media (max-width: 700px) {
+  .real-review-carousel { padding: 24px 18px; border-radius: 20px; }
+  .real-review-top, .real-review-controls { align-items: flex-start; flex-direction: column; }
+  .real-review-card-main { min-height: 520px; padding: 22px; }
+}
+
 </style>
 <script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY">
 </script>
@@ -1317,35 +1512,36 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <a class="btn-gold" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none;" target="_blank">Read Live Google Reviews</a>
 <a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+write+a+review" rel="noopener" style="text-decoration:none;" target="_blank">Leave a Review</a>
 </div>
-<p class="review-note">Tip: replace these sample review cards with exact customer quotes from the shop’s public Google Business Profile before launch. That keeps the site honest and makes the trust section feel more real.</p>
-<div class="reviews-grid">
-<div class="review">
-<div class="review-tag">Verified review theme</div>
-<div class="review-quote">"</div>
-<p class="review-text">Customers repeatedly look for honest diagnostics, clear pricing, and a shop that explains the repair before doing the work. Highlighting that directly helps visitors feel safe requesting service.</p>
-<div class="review-footer">
-<div class="review-author">Transparency</div>
-<div class="review-stars">★★★★★</div>
-</div>
-</div>
-<div class="review">
-<div class="review-tag">Verified review theme</div>
-<div class="review-quote">"</div>
-<p class="review-text">Fast communication is one of the biggest conversion points for auto repair. This section tells customers they can expect a quick response after submitting an appointment request.</p>
-<div class="review-footer">
-<div class="review-author">Communication</div>
-<div class="review-stars">★★★★★</div>
-</div>
-</div>
-<div class="review">
-<div class="review-tag">Verified review theme</div>
-<div class="review-quote">"</div>
-<p class="review-text">Family-owned local service is a major trust signal. Use real shop photos and real review quotes here to make the website feel more personal than a chain repair shop.</p>
-<div class="review-footer">
-<div class="review-author">Local Trust</div>
-<div class="review-stars">★★★★★</div>
-</div>
-</div>
+<p class="review-note">These are real Google review excerpts provided from the shop’s public Google profile screenshots. The main review automatically rotates, and visitors can also click through to read live reviews.</p>
+<div class="real-review-carousel" aria-label="Rotating featured Google reviews">
+  <div class="real-review-top">
+    <div>
+      <div class="real-review-label">Featured Google Review</div>
+      <div class="real-review-source">One full customer review at a time · rotates automatically</div>
+    </div>
+    <a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none; clip-path:none; padding:12px 22px;" target="_blank">Check Shop Reviews</a>
+  </div>
+  <div class="real-review-card-main" id="real-review-card">
+    <div class="real-review-kicker">Google Verified Feedback</div>
+    <div class="real-review-stars" id="real-review-stars">★★★★★</div>
+    <p class="real-review-text" id="real-review-text"></p>
+    <div class="real-review-person">
+      <div class="review-avatar" id="real-review-avatar">B</div>
+      <div>
+        <div class="review-name" id="real-review-name">Bailey</div>
+        <div class="review-meta" id="real-review-meta">5-star Google review</div>
+      </div>
+    </div>
+  </div>
+  <div class="real-review-controls">
+    <div class="review-arrow-group">
+      <button class="review-arrow" type="button" onclick="changeReview(-1)" aria-label="Previous review">‹</button>
+      <button class="review-arrow" type="button" onclick="changeReview(1)" aria-label="Next review">›</button>
+    </div>
+    <div class="review-dots" id="review-dots" aria-label="Review carousel dots"></div>
+    <a class="review-live-link" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" target="_blank">Read more on Google →</a>
+  </div>
+  <div class="real-review-progress" aria-hidden="true"></div>
 </div>
 <div class="trust-strip">
 <div class="trust-card"><strong>No-pressure estimates</strong><span>Encourages customers to submit service requests without feeling locked in.</span></div>
@@ -1380,7 +1576,6 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 <div class="photo-caption"><strong>Completed Repairs</strong><span>Use finished-job photos to show attention to detail and build confidence before customers book.</span></div>
 </div>
 </div>
-<div class="photo-note"><strong>Launch tip:</strong> add 6–10 real images before publishing for a customer. Even smartphone photos are better than generic stock images because they make the business feel legitimate and local.</div>
 </div></div><div class="page" id="page-account"><div class="page-header"><div class="eyebrow">Customer Tools</div><div class="heading" style="margin-bottom:0">ACCOUNT &amp; VEHICLE</div><p>Create a quick customer profile and save vehicle details for faster future booking requests.</p></div><section class="account-benefits" id="account-benefits">
 <div class="account-benefits-wrap">
 <div class="account-copy">
@@ -2018,6 +2213,93 @@ window.addEventListener('DOMContentLoaded', initFinalPolish);
     "reviewCount": "768"
   }
 }
+</script>
+<script>
+/* Real Google review carousel */
+const realGoogleReviews = [
+  {
+    name: 'Bailey',
+    meta: '5-star Google review · 4 months ago',
+    initial: 'B',
+    text: 'I had a great experience getting my tire pressure sensors replaced. From start to finish, the customer service was friendly and professional. Especially J.R. took the time to clearly explain what needed to be done, why it was necessary, and how the sensors work, which I really appreciated. Also I was provided a detailed price breakdown up front, so there were no surprises, and everything was explained in an easy to understand way and my car was ready when promised. I’ll definitely be coming back and would highly recommend them to anyone looking for reliable, trustworthy service.'
+  },
+  {
+    name: 'Donte J',
+    meta: '5-star Google review · 3 months ago',
+    initial: 'D',
+    text: 'I greatly appreciate the team for repairing my car. They provided an excellent turnaround — from scheduling the appointment to sourcing parts and completing the repair. Their help in dealing with my third-party tire warranty company was especially appreciated; they quickly identified the issue when the Tesla dealership could not, saving me months of waiting for another appointment. I’ll definitely return for future service. Aside from pricing being a bit on the high side, the work is outstanding. Special shout-out to Mark — he was an excellent service advisor.'
+  },
+  {
+    name: 'Angie Linde',
+    meta: '5-star Google review · 2 months ago',
+    initial: 'A',
+    text: 'Mark and all the staff at RMW are outstanding. They explain things very well and communicate issues quickly and honestly. It is easy to get an appointment and we have been happy with the work their mechanics have done on our Porsche Diesel Cayenne, including oil change, new battery and other maintenance items. I highly recommend this business if you need work on your vehicle. My son also uses them for his Macan and has had good experiences with some big repairs. Can’t recommend enough!'
+  },
+  {
+    name: 'Cindy Bergman',
+    meta: '5-star Google review · a month ago',
+    initial: 'C',
+    text: 'My first visit to Revolution Motor Works was outstanding. I came in for just a routine oil change, but had such a positive experience that I plan to return for any future services I need. The team was incredibly friendly and informative. Pricing was more than fair and they even applied a discount for a current promotion that I was unaware of without me having to ask for it. It was very refreshing to find a place that didn’t try to sell me any parts or services I didn’t need and they gave me a detailed quote of what I’ll actually need in the future, only upon my request. Their first impression really makes the difference and I look forward to coming back!'
+  },
+  {
+    name: 'Steven Linde',
+    meta: '5-star Google review · a month ago',
+    initial: 'S',
+    text: 'To date, I have had several outstanding experiences working with RMW on my 2015 Porsche Macan Turbo. From the moment I walked in, it was clear I was dealing with a team that truly cares about their customers. Mark and the entire staff are incredibly knowledgeable, professional, and genuinely passionate about what they do. Mark took the time to explain everything clearly, answered all my questions, and made sure I felt confident about the work being done. It’s not easy finding a local shop you can fully trust with Porsches, but RMW absolutely delivers. They do things the right way. You can tell they take pride in their work and in taking care of their customers. I wouldn’t hesitate to recommend Revolution Motor Works to anyone.'
+  }
+];
+let currentReviewIndex = 0;
+let reviewTimer;
+function renderRealReview(index) {
+  const card = document.getElementById('real-review-card');
+  const text = document.getElementById('real-review-text');
+  const name = document.getElementById('real-review-name');
+  const meta = document.getElementById('real-review-meta');
+  const avatar = document.getElementById('real-review-avatar');
+  const dots = document.getElementById('review-dots');
+  if (!card || !text || !name || !meta || !avatar || !dots) return;
+  const review = realGoogleReviews[index];
+  card.classList.add('is-changing');
+  window.setTimeout(() => {
+    text.textContent = '“' + review.text + '”';
+    name.textContent = review.name;
+    meta.textContent = review.meta;
+    avatar.textContent = review.initial;
+    dots.querySelectorAll('.review-dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
+    card.classList.remove('is-changing');
+  }, 180);
+}
+function buildReviewDots() {
+  const dots = document.getElementById('review-dots');
+  if (!dots) return;
+  dots.innerHTML = '';
+  realGoogleReviews.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'review-dot' + (index === 0 ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', 'Show review ' + (index + 1));
+    dot.addEventListener('click', () => {
+      currentReviewIndex = index;
+      renderRealReview(currentReviewIndex);
+      restartReviewRotation();
+    });
+    dots.appendChild(dot);
+  });
+}
+function changeReview(direction) {
+  currentReviewIndex = (currentReviewIndex + direction + realGoogleReviews.length) % realGoogleReviews.length;
+  renderRealReview(currentReviewIndex);
+  restartReviewRotation();
+}
+function restartReviewRotation() {
+  window.clearInterval(reviewTimer);
+  reviewTimer = window.setInterval(() => changeReview(1), 7500);
+}
+window.addEventListener('DOMContentLoaded', () => {
+  buildReviewDots();
+  renderRealReview(0);
+  restartReviewRotation();
+});
 
 
 /* Netlify Forms helpers — fixed version */
