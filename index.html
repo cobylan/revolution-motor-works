@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revolution Motor Works | Finksburg, MD</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Revolution Motor Works | Clean Organized Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Outfit:wght@300;400;500;600&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
 <style>
 :root {
 --gold: #E8A020;
@@ -73,6 +74,33 @@ background: var(--gold); color: var(--black);
 transition: background .2s;
 }
 .nav-cta:hover { background: var(--gold-light); }
+
+
+.nav-toggle {
+display: none;
+flex-direction: column;
+gap: 5px;
+cursor: pointer;
+background: transparent;
+border: 0;
+padding: 8px;
+}
+.nav-toggle span {
+width: 26px;
+height: 3px;
+background: var(--light);
+border-radius: 3px;
+display: block;
+}
+.nav-login {
+font-family: 'Rajdhani', sans-serif;
+font-size: .85rem; font-weight: 700; letter-spacing: 2px;
+text-transform: uppercase; cursor: pointer;
+padding: 10px 18px; border: 1px solid var(--border);
+background: transparent; color: var(--light);
+transition: border-color .2s, color .2s;
+}
+.nav-login:hover { border-color: var(--gold); color: var(--white); }
 
 /* ── PAGES ── */
 .page { display: none; padding-top: 70px; min-height: 100vh; }
@@ -276,7 +304,33 @@ transform-origin: left;
 font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
 color: var(--white); margin-bottom: 12px; letter-spacing: 1px;
 }
-.svc-desc { font-size: .95rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+.svc-desc { font-size: .95rem; color: var(--muted); line-height: 1.75; font-weight: 300; margin-bottom: 22px; }
+.svc-price {
+font-family: 'Rajdhani', sans-serif;
+font-size: 1.1rem;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: var(--gold);
+margin-bottom: 8px;
+}
+.svc-price-note {
+font-size: .78rem;
+color: #555;
+line-height: 1.5;
+font-weight: 300;
+}
+.pricing-disclaimer {
+background: var(--panel);
+border-top: 1px solid var(--border);
+border-bottom: 1px solid var(--border);
+padding: 26px 52px;
+color: var(--muted);
+font-size: .92rem;
+line-height: 1.7;
+font-weight: 300;
+}
+.pricing-disclaimer strong { color: var(--light); font-weight: 600; }
 
 .svc-cta-bar { background: var(--gold); padding: 56px 52px; text-align: center; }
 .svc-cta-bar h2 {
@@ -377,6 +431,442 @@ clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 
 }
 .submit-btn:hover { background: var(--gold-light); }
 
+
+/* Appointment booking system */
+.booking-intro {
+background: rgba(232,160,32,.08);
+border: 1px solid rgba(232,160,32,.22);
+padding: 18px 20px;
+margin-bottom: 26px;
+color: #aaa;
+font-size: .95rem;
+line-height: 1.7;
+}
+.booking-intro strong { color: var(--white); }
+.booking-form .form-help {
+font-size: .78rem;
+color: #555;
+margin-top: 6px;
+line-height: 1.5;
+}
+.confirmation-box {
+display: none;
+margin-top: 18px;
+padding: 18px;
+border: 1px solid rgba(232,160,32,.35);
+background: rgba(232,160,32,.1);
+color: var(--light);
+line-height: 1.7;
+}
+.confirmation-box.show { display: block; }
+.confirmation-title {
+font-family: 'Rajdhani', sans-serif;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(--gold);
+margin-bottom: 8px;
+}
+.booking-summary {
+margin-top: 10px;
+color: #aaa;
+font-size: .9rem;
+}
+
+
+/* Task 10: polished success / error messages */
+.site-toast-wrap { position: fixed; right: 22px; bottom: 92px; z-index: 900; display: flex; flex-direction: column; gap: 12px; max-width: min(420px, calc(100vw - 32px)); pointer-events: none; }
+.site-toast { pointer-events: auto; background: #111; border: 1px solid rgba(232,160,32,.35); box-shadow: 0 18px 60px rgba(0,0,0,.45); padding: 16px 18px; display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: flex-start; transform: translateY(14px); opacity: 0; animation: toastIn .25s ease forwards; }
+.site-toast.success { border-color: rgba(52,211,153,.45); } .site-toast.error { border-color: rgba(248,113,113,.55); }
+.site-toast-icon { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; background: rgba(232,160,32,.15); color: var(--gold); }
+.site-toast.success .site-toast-icon { background: rgba(52,211,153,.15); color: #34d399; } .site-toast.error .site-toast-icon { background: rgba(248,113,113,.12); color: #f87171; }
+.site-toast-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); margin-bottom: 3px; }
+.site-toast-text { font-size: .9rem; line-height: 1.55; color: #aaa; } .site-toast-close { background: transparent; border: 0; color: #666; font-size: 1.2rem; cursor: pointer; line-height: 1; } .site-toast-close:hover { color: var(--white); }
+@keyframes toastIn { to { opacity: 1; transform: translateY(0); } }
+.success-panel { margin-top: 18px; border: 1px solid rgba(52,211,153,.42); background: linear-gradient(135deg, rgba(52,211,153,.11), rgba(232,160,32,.07)); padding: 20px; box-shadow: 0 18px 60px rgba(0,0,0,.22); }
+.success-panel-head { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; } .success-panel-icon { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(52,211,153,.17); color: #34d399; font-weight: 800; }
+.success-panel-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); } .success-panel-sub { color: #aaa; font-size: .92rem; line-height: 1.6; }
+.success-panel-grid { margin-top: 14px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .success-panel-item { background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.06); padding: 10px 12px; color: #aaa; font-size: .86rem; line-height: 1.45; }
+.success-panel-item strong { color: var(--gold); display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 3px; } .success-panel-actions { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+.success-panel-actions button, .success-panel-actions a { font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 10px 14px; border: 1px solid rgba(232,160,32,.35); background: transparent; color: var(--light); text-decoration: none; cursor: pointer; }
+.success-panel-actions button:hover, .success-panel-actions a:hover { border-color: var(--gold); color: var(--white); }
+@media (max-width: 700px) { .site-toast-wrap { right: 14px; left: 14px; bottom: 82px; max-width: none; } .success-panel-grid { grid-template-columns: 1fr; } }
+
+
+/* Login modal + form security helpers */
+.login-modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,.82);
+z-index: 500;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+.login-modal.open { display: flex; }
+.login-card {
+background: var(--panel);
+border: 1px solid var(--border);
+width: min(420px, 100%);
+padding: 28px;
+box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+.login-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2.4rem;
+color: var(--white);
+letter-spacing: 1px;
+margin-bottom: 8px;
+}
+.login-sub { color: var(--muted); font-size: .95rem; line-height: 1.6; margin-bottom: 22px; }
+.login-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+.form-status { margin-top: 14px; font-size: .9rem; color: var(--gold); min-height: 20px; }
+
+
+
+/* Task 4: stronger trust + live reviews section */
+.review-trust-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 34px;
+}
+.review-trust-item {
+  background: var(--black);
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+.review-trust-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.review-trust-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.review-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+.review-note {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: -16px;
+  margin-bottom: 30px;
+  max-width: 760px;
+}
+.review-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(232,160,32,.35);
+  color: var(--gold);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  margin-bottom: 18px;
+}
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+.trust-card {
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--border);
+  padding: 22px;
+}
+.trust-card strong { color: var(--white); display: block; margin-bottom: 8px; }
+.trust-card span { color: var(--muted); font-size: .9rem; line-height: 1.6; font-weight: 300; }
+
+/* Task 3 support: Google map embed */
+.map-card {
+  margin-top: 28px;
+  border: 1px solid var(--border);
+  background: var(--dark);
+  overflow: hidden;
+}
+.map-card iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+}
+.map-card-footer {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.map-card-footer span { color: var(--muted); font-size: .88rem; }
+.map-card-footer a { color: var(--gold); text-decoration: none; font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+
+
+/* ── SHOP PHOTOS / BEFORE-AFTER ── */
+.photo-section {
+  background: var(--black);
+  padding: 100px 52px;
+  border-top: 1px solid var(--border);
+}
+.photo-intro {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin: -35px 0 44px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.photo-card {
+  min-height: 260px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(135deg, rgba(232,160,32,.20), rgba(255,255,255,.03)),
+    repeating-linear-gradient(45deg, #111 0, #111 18px, #151515 18px, #151515 36px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  transition: transform .2s, border-color .2s;
+}
+.photo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(232,160,32,.45);
+}
+.photo-card::before {
+  content: attr(data-photo-label);
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(232,160,32,.9);
+  font-size: .75rem;
+}
+.photo-card::after {
+  content: 'Replace this block with a real shop/photo image';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  color: rgba(232,160,32,.28);
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.photo-caption {
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.25));
+  position: relative;
+  z-index: 2;
+}
+.photo-caption strong {
+  display: block;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--white);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.photo-caption span {
+  display: block;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.before-after-card {
+  grid-column: span 2;
+  min-height: 320px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.ba-panel {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(232,160,32,.14), rgba(255,255,255,.02)),
+    repeating-linear-gradient(45deg, #111 0, #111 20px, #151515 20px, #151515 40px);
+  display: flex;
+  align-items: flex-end;
+  min-height: 320px;
+}
+.ba-label {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--gold);
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+.ba-caption {
+  width: 100%;
+  padding: 24px;
+  color: var(--light);
+  background: linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.25));
+  font-size: .95rem;
+  line-height: 1.6;
+}
+.photo-note {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--gold);
+  background: rgba(232,160,32,.07);
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+.photo-note strong { color: var(--light); }
+
+
+
+
+/* ── TASK 8: ACCOUNT BENEFITS SECTION ── */
+.account-benefits{background:linear-gradient(135deg,#080808 0%,#111 55%,rgba(232,160,32,.08) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:90px 52px}
+.account-benefits-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.account-copy p{color:#929292;font-size:1.02rem;line-height:1.85;font-weight:300;margin-bottom:28px;max-width:560px}
+.account-benefit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.account-benefit{background:rgba(24,24,24,.92);border:1px solid var(--border);padding:20px;min-height:126px;transition:border-color .2s,transform .2s}
+.account-benefit:hover{border-color:rgba(232,160,32,.35);transform:translateY(-2px)}
+.account-benefit-icon{font-size:1.55rem;margin-bottom:12px}.account-benefit-title{font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--white);margin-bottom:6px}.account-benefit-text{color:var(--muted);font-size:.86rem;line-height:1.55}
+.account-card{background:var(--panel);border:1px solid rgba(232,160,32,.22);padding:34px;box-shadow:0 26px 60px rgba(0,0,0,.35);position:relative;overflow:hidden}.account-card:before{content:'';position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(232,160,32,.12);top:-70px;right:-60px}.account-card-inner{position:relative;z-index:1}.account-card-kicker{font-family:'Rajdhani',sans-serif;color:var(--gold);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:.78rem;margin-bottom:12px}.account-card-title{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:.95;color:var(--white);margin-bottom:16px}.account-card-list{list-style:none;display:grid;gap:12px;margin:22px 0 28px}.account-card-list li{color:#aaa;font-size:.95rem;display:flex;gap:10px;align-items:flex-start}.account-card-list li span{color:var(--gold);font-weight:700}.account-note{color:#5f5f5f;font-size:.78rem;line-height:1.55;margin-top:14px}
+.login-benefits-mini{background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.18);padding:14px;margin:-6px 0 18px}.login-benefits-mini ul{list-style:none;display:grid;gap:7px}.login-benefits-mini li{color:#aaa;font-size:.84rem;line-height:1.4}.login-benefits-mini strong{color:var(--gold)}
+@media(max-width:900px){.account-benefits{padding:64px 24px}.account-benefits-wrap{grid-template-columns:1fr;gap:30px}.account-benefit-grid{grid-template-columns:1fr}.account-card{padding:26px 22px}}
+
+
+/* ── TASK 9: VEHICLE PROFILE SECTION ── */
+.vehicle-profile-section{background:#0b0b0b;padding:92px 52px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.vehicle-profile-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:.95fr 1.05fr;gap:42px;align-items:start}
+.vehicle-profile-copy p{color:#8c8c8c;font-size:1.02rem;line-height:1.85;font-weight:300;margin-bottom:24px}
+.vehicle-profile-points{display:grid;gap:12px;margin-top:26px}
+.vehicle-profile-point{display:flex;gap:12px;align-items:flex-start;color:#aaa;font-size:.95rem;line-height:1.55;background:rgba(24,24,24,.65);border:1px solid var(--border);padding:14px 16px}
+.vehicle-profile-point span{color:var(--gold);font-weight:700}
+.vehicle-profile-card{background:var(--panel);border:1px solid rgba(232,160,32,.24);padding:34px;box-shadow:0 24px 55px rgba(0,0,0,.32)}
+.vehicle-profile-card-title{font-family:'Bebas Neue',sans-serif;font-size:2.7rem;line-height:.95;color:var(--white);margin-bottom:10px}
+.vehicle-profile-card-sub{color:var(--muted);font-size:.95rem;line-height:1.65;margin-bottom:24px;font-weight:300}
+.vehicle-profile-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.vehicle-profile-status{display:none;margin-top:18px;padding:16px 18px;background:rgba(232,160,32,.08);border-left:3px solid var(--gold);color:#aaa;line-height:1.6;font-size:.94rem}
+.vehicle-profile-status.show{display:block}
+.saved-vehicle-card{display:none;margin-top:22px;border:1px solid var(--border);background:#101010;padding:18px}
+.saved-vehicle-card.show{display:block}
+.saved-vehicle-card h4{font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-size:.9rem;margin-bottom:10px}
+.saved-vehicle-main{font-family:'Bebas Neue',sans-serif;color:var(--white);font-size:2rem;line-height:1;margin-bottom:8px}
+.saved-vehicle-detail{color:var(--muted);font-size:.9rem;line-height:1.6}
+@media(max-width:900px){.vehicle-profile-section{padding:64px 24px}.vehicle-profile-wrap{grid-template-columns:1fr}.vehicle-profile-card{padding:26px 22px}.vehicle-profile-actions{grid-template-columns:1fr}}
+
+/* ── FAQ SECTION ── */
+.faq-section {
+  background: var(--panel);
+  padding: 92px 52px;
+  border-top: 1px solid var(--border);
+}
+.faq-wrap { max-width: 980px; margin: 0 auto; }
+.faq-intro { color: var(--muted); font-size: 1.02rem; line-height: 1.8; max-width: 640px; margin: -36px 0 42px; font-weight: 300; }
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color .2s, background .2s;
+}
+.faq-item.open { border-color: rgba(232,160,32,.45); background: #141414; }
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 26px;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(232,160,32,.35);
+  color: var(--gold);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.faq-item.open .faq-icon { background: var(--gold); color: var(--black); }
+.faq-answer {
+  display: none;
+  padding: 0 26px 24px;
+  color: #999;
+  font-size: .96rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+.faq-item.open .faq-answer { display: block; }
+.faq-cta {
+  margin-top: 36px;
+  padding: 30px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.faq-cta strong { display: block; color: var(--white); font-family: 'Rajdhani', sans-serif; font-size: 1.25rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.faq-cta span { color: var(--muted); font-size: .95rem; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .faq-section { padding: 64px 24px; }
+  .faq-question { padding: 20px; font-size: 1rem; }
+  .faq-answer { padding: 0 20px 22px; }
+  .faq-cta { padding: 24px; }
+}
+
 /* ── FOOTER ── */
 footer {
 background: #040404; border-top: 1px solid var(--border);
@@ -412,7 +902,7 @@ display: flex; justify-content: space-between; align-items: center; flex-wrap: w
 @media (max-width: 900px) {
 nav { padding: 0 20px; }
 .nav-links { gap: 20px; }
-.hero-content, .section, .reviews-bg, .page-header { padding-left: 24px; padding-right: 24px; }
+.hero-content, .section, .reviews-bg, .page-header, .photo-section { padding-left: 24px; padding-right: 24px; }
 .stats-ticker { padding: 24px; }
 .about-split, .contact-split { grid-template-columns: 1fr; }
 .about-right, .contact-left, .contact-right { padding: 60px 24px; }
@@ -421,126 +911,244 @@ nav { padding: 0 20px; }
 footer { padding: 40px 24px 24px; }
 .form-row { grid-template-columns: 1fr; }
 .svc-grid { grid-template-columns: 1fr; }
+
+.photo-grid { grid-template-columns: 1fr; }
+.before-after-card { grid-column: span 1; grid-template-columns: 1fr; }
+.ba-panel { min-height: 240px; }
+.photo-card { min-height: 240px; }
 }
+
+@media (max-width: 768px) {
+nav { padding: 0 16px; }
+.nav-logo-top { font-size: 1.25rem; letter-spacing: 3px; }
+.nav-logo-sub { letter-spacing: 3px; }
+.nav-toggle { display: flex; }
+.nav-links {
+display: none;
+position: absolute;
+top: 70px;
+left: 0;
+right: 0;
+background: rgba(8,8,8,.98);
+border-bottom: 1px solid var(--border);
+flex-direction: column;
+align-items: stretch;
+gap: 16px;
+padding: 20px;
+}
+.nav-links.open { display: flex; }
+.nav-links a, .nav-links button { width: 100%; text-align: center; }
+.hero-content { padding: 80px 20px; }
+.hero-h1 { font-size: clamp(3.6rem, 18vw, 6rem); }
+.stats-ticker { justify-content: flex-start; }
+.heading { margin-bottom: 36px; }
+}
+
+
+
+/* ── MOBILE STICKY ACTION BAR ── */
+.mobile-action-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+  background: rgba(8,8,8,.98);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -10px 30px rgba(0,0,0,.35);
+}
+.mobile-action-bar a,
+.mobile-action-bar button {
+  flex: 1;
+  min-height: 62px;
+  border: 0;
+  border-right: 1px solid var(--border);
+  background: transparent;
+  color: var(--light);
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.mobile-action-bar a:last-child,
+.mobile-action-bar button:last-child { border-right: 0; }
+.mobile-action-bar .mobile-action-primary {
+  background: var(--gold);
+  color: var(--black);
+}
+.mobile-action-icon { font-size: 1.1rem; line-height: 1; }
+
+@media (max-width: 768px) {
+  body { padding-bottom: 68px; }
+  .mobile-action-bar { display: flex; }
+}
+
+
+
+/* ── CLEAN PAGE ORGANIZATION UPGRADES ── */
+.nav-links { gap: 20px; }
+.nav-links a { white-space: nowrap; }
+.home-next-steps .pillar { display:flex; flex-direction:column; gap:10px; }
+.mini-cta { margin-top:auto; padding: 12px 18px !important; clip-path:none !important; }
+.booking-page-panel { max-width: 980px; margin: 0 auto; padding: 70px 52px; background: var(--black); }
+.booking-page-panel .booking-form, .booking-page-panel form { max-width: 840px; margin: 0 auto; }
+.clean-contact-card { display:flex; flex-direction:column; justify-content:center; }
+.contact-action-stack { display:grid; gap:14px; margin-top:24px; }
+#page-account .account-benefits, #page-account .vehicle-profile-section, #page-faq .faq-section { padding-top: 70px; }
+#page-reviews .reviews-bg { padding-top: 70px; }
+#page-reviews .photo-section { padding-top: 70px; }
+@media (max-width: 1100px) { .nav-links { gap: 12px; } .nav-links a { font-size:.85rem; letter-spacing:1px; } .nav-cta { padding:10px 14px; } }
+@media (max-width: 900px) { .booking-page-panel { padding: 50px 24px; } }
+
+/* Step 2 premium homepage redesign */
+.premium-hero{min-height:calc(92vh - 70px);padding-right:52px;gap:30px}.premium-hero-content{max-width:900px}.premium-hero-desc{max-width:560px;font-size:1.18rem}.premium-trust-row{margin-bottom:36px}.hero-card{position:relative;z-index:3;margin-left:auto;margin-right:52px;width:min(360px,36vw);background:rgba(24,24,24,.88);border:1px solid rgba(232,160,32,.28);padding:28px;display:grid;gap:14px;backdrop-filter:blur(14px);box-shadow:0 24px 80px rgba(0,0,0,.35)}.hero-card-label{font-family:'Rajdhani',sans-serif;color:var(--gold);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:.78rem;margin-bottom:4px}.hero-card button{text-align:left;width:100%;padding:16px 18px;background:#101010;color:var(--light);border:1px solid var(--border);font-family:'Outfit',sans-serif;cursor:pointer;transition:.2s}.hero-card button:hover{border-color:var(--gold);transform:translateX(4px);color:var(--white)}.home-strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--gold);color:var(--black);padding:26px 52px;gap:18px}.home-strip div{display:flex;flex-direction:column;gap:3px}.home-strip strong{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;letter-spacing:1px}.home-strip span{font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.78rem;color:rgba(0,0,0,.58)}.home-section{padding:90px 52px}.home-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.home-action-card{background:var(--panel);border:1px solid var(--border);padding:34px;min-height:300px;display:flex;flex-direction:column;gap:14px;transition:.22s}.home-action-card:hover{transform:translateY(-4px);border-color:rgba(232,160,32,.32)}.home-action-card.featured{background:linear-gradient(180deg,rgba(232,160,32,.12),var(--panel));border-color:rgba(232,160,32,.45)}.home-action-card span{font-size:2rem}.home-action-card h3{font-family:'Rajdhani',sans-serif;color:var(--white);text-transform:uppercase;letter-spacing:1px;font-size:1.25rem}.home-action-card p{color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:auto}.home-proof{background:var(--dark);display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}.proof-copy p{color:var(--muted);line-height:1.8;max-width:560px;font-weight:300}.proof-list{display:grid;gap:14px}.proof-list div{background:var(--black);border:1px solid var(--border);padding:22px;display:flex;flex-direction:column;gap:6px}.proof-list strong{color:var(--white);font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:1px}.proof-list span{color:var(--muted);line-height:1.6}@media(max-width:1000px){.premium-hero{padding-right:20px}.hero-card{display:none}.home-card-grid,.home-proof{grid-template-columns:1fr}.home-strip{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.home-strip{grid-template-columns:1fr;padding:22px 24px}.home-section{padding:60px 24px}}
+
+/* Step 3: premium mobile optimization */
+.mobile-menu-backdrop { display: none; position: fixed; inset: 70px 0 0; background: rgba(0,0,0,.58); backdrop-filter: blur(3px); z-index: 180; opacity: 0; transition: opacity .22s ease; }
+.mobile-menu-backdrop.open { display: block; opacity: 1; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav-toggle span { transition: transform .22s ease, opacity .18s ease; }
+body.menu-open { overflow: hidden; }
+@media (max-width: 768px) {
+  nav { height: 66px; padding: 0 14px; }
+  .page { padding-top: 66px; }
+  .mobile-menu-backdrop { inset: 66px 0 0; }
+  .nav-logo-top { font-size: 1.05rem; letter-spacing: 2.2px; }
+  .nav-logo-sub { font-size: .55rem; letter-spacing: 2.4px; }
+  .nav-toggle { min-width: 46px; min-height: 46px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.08); }
+  .nav-links { top: 66px; z-index: 220; padding: 14px; gap: 8px; max-height: calc(100vh - 66px - 68px); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 28px 50px rgba(0,0,0,.55); }
+  .nav-links a, .nav-links button { min-height: 52px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); background: #101010; font-size: .95rem; letter-spacing: 1.5px; }
+  .nav-links a.active { border-color: rgba(232,160,32,.45); color: var(--gold); }
+  .nav-links .nav-cta { margin-top: 4px; border-color: var(--gold); background: var(--gold); color: var(--black); }
+  .premium-hero { min-height: auto; padding: 0; }
+  .hero-content, .premium-hero-content { padding: 56px 18px 42px; }
+  .hero-badge { padding: 8px 12px; margin-bottom: 22px; max-width: 100%; }
+  .hero-badge-text { font-size: .68rem; letter-spacing: 1.8px; }
+  .hero-h1 { font-size: clamp(3rem, 17vw, 4.8rem); line-height: .88; letter-spacing: 2px; margin-bottom: 22px; }
+  .hero-desc, .premium-hero-desc { font-size: 1rem; line-height: 1.65; max-width: none; }
+  .hero-rating { margin-bottom: 28px; flex-wrap: wrap; }
+  .hero-btns { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .btn-gold, .btn-ghost { width: 100%; min-height: 54px; padding: 16px 18px; font-size: .95rem; }
+  .home-strip { grid-template-columns: repeat(2, minmax(0,1fr)); padding: 18px; gap: 12px; }
+  .home-strip div { background: rgba(0,0,0,.08); padding: 14px; }
+  .home-strip strong { font-size: 2.1rem; }
+  .home-strip span { font-size: .68rem; letter-spacing: 1.4px; }
+  .home-section, .section, .reviews-bg, .page-header, .photo-section, .faq-section, .vehicle-profile-section, .account-benefits { padding-left: 18px !important; padding-right: 18px !important; }
+  .heading { font-size: clamp(2.4rem, 12vw, 3.4rem); margin-bottom: 30px; }
+  .eyebrow { letter-spacing: 3px; }
+  .home-action-card, .pillar, .review, .svc-card, .vehicle-profile-card, .account-card { padding: 24px 20px; }
+  .contact-left, .contact-right, .about-left, .about-right { padding: 46px 18px; }
+  .contact-split, .about-split, .home-proof { grid-template-columns: 1fr; }
+  .form-row, .vehicle-profile-form-grid, .account-benefit-grid { grid-template-columns: 1fr; }
+  input, textarea, select, button { font-size: 16px; }
+  input, select { min-height: 50px; }
+  textarea { min-height: 130px; }
+  .site-toast-wrap { bottom: 78px; left: 10px; right: 10px; }
+  .site-toast { padding: 14px 14px; }
+  .login-card { width: min(94vw, 420px); max-height: calc(100vh - 40px); overflow-y: auto; padding: 24px 20px; }
+  .mobile-action-bar { padding-bottom: env(safe-area-inset-bottom); }
+  .mobile-action-bar a, .mobile-action-bar button { min-height: 64px; font-size: .72rem; }
+}
+@media (max-width: 420px) {
+  .nav-logo-top { font-size: .9rem; letter-spacing: 1.6px; }
+  .nav-logo-sub { max-width: 170px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .home-strip { grid-template-columns: 1fr; }
+  .hero-h1 { font-size: clamp(2.75rem, 17vw, 4.1rem); }
+  .mobile-action-bar a, .mobile-action-bar button { font-size: .68rem; letter-spacing: 1px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+
+
+/* ── STEP 4 FINAL POLISH: spacing, depth, animations ── */
+:root { --ease-out: cubic-bezier(.16,1,.3,1); }
+body { background: radial-gradient(circle at top left, rgba(232,160,32,.05), transparent 34rem), var(--black); }
+.page.active { animation: pageFade .38s var(--ease-out) both; }
+@keyframes pageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.section, .home-section, .reviews-bg, .photo-section, .faq-section, .account-benefits, .vehicle-profile-section { position: relative; }
+.section::before, .home-section::before, .reviews-bg::before, .photo-section::before, .faq-section::before, .account-benefits::before, .vehicle-profile-section::before {
+  content: ''; position: absolute; top: 0; left: 52px; right: 52px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,160,32,.18), transparent);
+  pointer-events: none;
+}
+.page-header { box-shadow: inset 0 -1px 0 rgba(255,255,255,.03); }
+.heading { letter-spacing: 1px; text-wrap: balance; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+.eyebrow::before { content:''; width: 24px; height: 2px; background: var(--gold); display:inline-block; }
+.pillar, .review, .svc-card, .photo-card, .faq-item, .account-card, .vehicle-profile-card, .home-action-card, .proof-list div, .map-card, .success-panel {
+  border-radius: 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.22);
+}
+.pillars, .svc-grid { background: transparent; gap: 16px; }
+.pillar, .svc-card { border: 1px solid var(--border); }
+.btn-gold, .btn-ghost, .submit-btn, .nav-cta { border-radius: 12px; clip-path: none !important; }
+.btn-gold, .submit-btn, .nav-cta { box-shadow: 0 12px 36px rgba(232,160,32,.16); }
+.btn-gold:hover, .submit-btn:hover, .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 42px rgba(232,160,32,.22); }
+.reveal-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease-out), transform .65s var(--ease-out); }
+.reveal-on-scroll.revealed { opacity: 1; transform: translateY(0); }
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 999; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); box-shadow: 0 0 18px rgba(232,160,32,.55); }
+.back-to-top { position: fixed; right: 18px; bottom: 92px; width: 46px; height: 46px; border: 1px solid rgba(232,160,32,.38); background: rgba(17,17,17,.88); color: var(--gold); border-radius: 50%; display: grid; place-items: center; cursor: pointer; z-index: 210; opacity: 0; transform: translateY(12px); pointer-events: none; transition: .25s var(--ease-out); backdrop-filter: blur(10px); }
+.back-to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { background: var(--gold); color: var(--black); }
+input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px rgba(232,160,32,.16); }
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+.nav-links a, .footer-link { min-height: 32px; display: inline-flex; align-items: center; }
+.premium-hero::after, .hero::after { content:''; position:absolute; inset:auto 0 0 0; height: 180px; background: linear-gradient(transparent, rgba(8,8,8,.94)); pointer-events:none; }
+.hero-content, .premium-hero-content { z-index: 2; }
+@media (max-width: 768px) {
+  .section::before, .home-section::before, .reviews-bg::before, .photo-section::before, .faq-section::before, .account-benefits::before, .vehicle-profile-section::before { left: 18px; right: 18px; }
+  .back-to-top { bottom: 86px; right: 14px; width: 42px; height: 42px; }
+  .heading { margin-bottom: 34px; }
+  .page-header { padding-top: 58px !important; padding-bottom: 44px !important; }
+}
+
 </style>
+<script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY">
+</script>
 </head>
 <body>
-
+<div class="scroll-progress" id="scroll-progress"></div>
+<button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
 <!-- NAV -->
 <nav>
 <div class="nav-logo" onclick="showPage('home')">
 <div class="nav-logo-top">REVOLUTION <span>MOTOR</span> WORKS</div>
 <div class="nav-logo-sub">Finksburg, Maryland</div>
 </div>
-<div class="nav-links">
-<a onclick="showPage('home')" class="active" id="nav-home">Home</a>
-<a onclick="showPage('services')" id="nav-services">Services</a>
-<a onclick="showPage('about')" id="nav-about">About</a>
-<a onclick="showPage('contact')" id="nav-contact">Contact</a>
-<button class="nav-cta" onclick="showPage('contact')">Get a Quote</button>
-</div>
+<button aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu" class="nav-toggle" onclick="toggleMenu()" type="button">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-links" id="nav-menu"><a class="active" id="nav-home" onclick="showPage('home')">Home</a><a id="nav-services" onclick="showPage('services')">Services</a><a id="nav-book" onclick="showPage('book')">Book</a><a id="nav-about" onclick="showPage('about')">About</a><a id="nav-reviews" onclick="showPage('reviews')">Reviews</a><a id="nav-account" onclick="showPage('account')">Account</a><a id="nav-faq" onclick="showPage('faq')">FAQ</a><a id="nav-contact" onclick="showPage('contact')">Contact</a><button class="nav-cta" onclick="showPage('book')" type="button">Schedule Service</button></div>
 </nav>
-
+<div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()" aria-hidden="true"></div>
 <!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
-<div class="hero">
-<div class="hero-lines"></div>
-<div class="hero-glow"></div>
-<div class="hero-content">
-<div class="hero-badge">
-<div class="hero-badge-dot"></div>
-<div class="hero-badge-text">Family Owned &amp; Operated · Finksburg, MD</div>
+  <section class="hero premium-hero">
+    <div class="hero-lines"></div><div class="hero-glow"></div>
+    <div class="hero-content premium-hero-content">
+      <div class="hero-badge"><div class="hero-badge-dot"></div><div class="hero-badge-text">Trusted Auto Repair · Finksburg, MD</div></div>
+      <h1 class="hero-h1">AUTO REPAIR<br><em>WITHOUT THE GUESSWORK</em></h1>
+      <p class="hero-desc premium-hero-desc">Book service, get clear communication, and work with a family-owned shop that explains what your vehicle needs before repairs begin.</p>
+      <div class="hero-rating premium-trust-row"><div class="stars">★★★★★</div><div class="rating-text"><strong>4.9 rating</strong> · 768 Google reviews · 12+ years in business</div></div>
+      <div class="hero-btns"><button class="btn-gold" onclick="showPage('book')">Book Appointment</button><button class="btn-ghost" onclick="showPage('services')">View Services & Pricing</button></div>
+    </div>
+    <aside class="hero-card"><div class="hero-card-label">Quick Actions</div><button onclick="showPage('book')">🗓️ Schedule service</button><button onclick="showPage('contact')">📞 Call or get directions</button><button onclick="showPage('account')">🚗 Save your vehicle</button></aside>
+  </section>
+  <section class="home-strip"><div><strong>4.9★</strong><span>Google Rating</span></div><div><strong>768</strong><span>Reviews</span></div><div><strong>12+</strong><span>Years Serving MD</span></div><div><strong>Mon–Fri</strong><span>8 AM – 5 PM</span></div></section>
+  <section class="home-section home-paths"><div class="eyebrow">Start Here</div><div class="heading">WHAT DO YOU<br>NEED TODAY?</div><div class="home-card-grid"><article class="home-action-card featured"><span>🗓️</span><h3>Book Service</h3><p>Request an appointment with service type, preferred date/time, and vehicle details.</p><button class="btn-gold mini-cta" onclick="showPage('book')">Book Now</button></article><article class="home-action-card"><span>🔧</span><h3>Browse Services</h3><p>See common repairs, diagnostics, maintenance, and transparent sample pricing ranges.</p><button class="btn-ghost mini-cta" onclick="showPage('services')">Services</button></article><article class="home-action-card"><span>📍</span><h3>Find the Shop</h3><p>Call, check hours, view the map, or get directions to 3306 Baltimore Blvd.</p><button class="btn-ghost mini-cta" onclick="showPage('contact')">Contact</button></article></div></section>
+  <section class="home-section home-proof"><div class="proof-copy"><div class="eyebrow">Why Customers Choose Us</div><div class="heading">CLEAR ANSWERS.<br>QUALITY WORK.</div><p>Customers want fast help without being overwhelmed. The homepage now focuses on the three most important actions: book service, understand services, and contact the shop.</p></div><div class="proof-list"><div><strong>Honest diagnostics</strong><span>Know what is wrong before approving repairs.</span></div><div><strong>Family-owned shop</strong><span>Local service instead of chain-store treatment.</span></div><div><strong>Vehicle profiles</strong><span>Returning customers can save vehicle details faster.</span></div></div></section>
 </div>
-<h1 class="hero-h1">
-REVOLUTION
-<em>MOTOR WORKS</em>
-</h1>
-<p class="hero-desc">Precision auto repair for drivers who care about their vehicle. Honest diagnostics, expert technicians, and a shop you can trust.</p>
-<div class="hero-rating">
-<div class="stars">★★★★★</div>
-<div class="rating-text"><strong>4.9</strong> · 768 Google Reviews</div>
-</div>
-<div class="hero-btns">
-<button class="btn-gold" onclick="showPage('contact')">Schedule Service</button>
-<button class="btn-ghost" onclick="showPage('services')">View Services</button>
-</div>
-</div>
-</div>
-
-<div class="stats-ticker">
-<div class="ticker-item">
-<div class="ticker-num">4.9</div>
-<div class="ticker-info">
-<div class="ticker-label">Star Rating</div>
-<div class="ticker-sub">768 Google Reviews</div>
-</div>
-</div>
-<div class="ticker-item">
-<div class="ticker-num">12+</div>
-<div class="ticker-info">
-<div class="ticker-label">Years in Business</div>
-<div class="ticker-sub">Trusted since day one</div>
-</div>
-</div>
-<div class="ticker-item">
-<div class="ticker-num">MD</div>
-<div class="ticker-info">
-<div class="ticker-label">Serving Pikesville</div>
-<div class="ticker-sub">&amp; surrounding areas</div>
-</div>
-</div>
-<div class="ticker-item">
-<div class="ticker-num">✓</div>
-<div class="ticker-info">
-<div class="ticker-label">Google Verified</div>
-<div class="ticker-sub">Certified business</div>
-</div>
-</div>
-</div>
-
-<div class="section">
-<div class="eyebrow">Why Revolution Motor Works</div>
-<div class="heading">WE TREAT YOUR<br>CAR LIKE OUR OWN</div>
-<div class="pillars">
-<div class="pillar"><span class="pillar-icon">🔧</span><div class="pillar-title">Expert Technicians</div><div class="pillar-text">Skilled mechanics with years of real-world experience across all makes and models — domestic and foreign.</div></div>
-<div class="pillar"><span class="pillar-icon">💬</span><div class="pillar-title">Honest Communication</div><div class="pillar-text">We explain exactly what your car needs and why — no upsells, no jargon, no surprises on your bill.</div></div>
-<div class="pillar"><span class="pillar-icon">⚡</span><div class="pillar-title">Fast Turnaround</div><div class="pillar-text">We work efficiently so you're not without your vehicle longer than necessary. Your time matters.</div></div>
-<div class="pillar"><span class="pillar-icon">🏠</span><div class="pillar-title">Family Owned</div><div class="pillar-text">We're not a chain. We're your neighbors in Finksburg — proud to serve our community with integrity.</div></div>
-</div>
-</div>
-
-<div class="reviews-bg">
-<div class="eyebrow">Google Reviews</div>
-<div class="heading">WHAT OUR<br>CUSTOMERS SAY</div>
-<div class="reviews-grid">
-<div class="review">
-<div class="review-quote">"</div>
-<p class="review-text">Revolution Motor Works is hands down the best shop in the area. They diagnosed my car in under an hour and had it fixed same day. Fair price, no BS.</p>
-<div class="review-footer">
-<div class="review-author">— James T.</div>
-<div class="review-stars">★★★★★</div>
-</div>
-</div>
-<div class="review">
-<div class="review-quote">"</div>
-<p class="review-text">Family-owned feel with professional-grade work. I've been taking my cars here for years and have never had a bad experience. Highly recommend.</p>
-<div class="review-footer">
-<div class="review-author">— Sandra R.</div>
-<div class="review-stars">★★★★★</div>
-</div>
-</div>
-<div class="review">
-<div class="review-quote">"</div>
-<p class="review-text">Brought in my BMW and they knew exactly what they were doing. Transparent pricing, quick communication, and the car drives better than ever.</p>
-<div class="review-footer">
-<div class="review-author">— Marcus D.</div>
-<div class="review-stars">★★★★★</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <!-- ══ SERVICES ══ -->
 <div class="page" id="page-services">
 <div class="page-header">
@@ -548,21 +1156,114 @@ REVOLUTION
 <div class="heading" style="margin-bottom:0">OUR SERVICES</div>
 <p>From routine maintenance to complex repairs, Revolution Motor Works handles it all. Every job is done right the first time.</p>
 </div>
+<div class="pricing-disclaimer"><strong>Transparent price ranges:</strong> These are sample starting ranges to help customers know what to expect. Final pricing depends on vehicle make/model, parts, labor time, and inspection results.</div>
 <div class="svc-grid">
-<div class="svc-card"><span class="svc-icon">🔴</span><div class="svc-title">Brake Repair</div><p class="svc-desc">Pads, rotors, calipers, and brake fluid flushes. We inspect your full brake system and give you a straight, honest answer on what needs attention.</p></div>
-<div class="svc-card"><span class="svc-icon">🔧</span><div class="svc-title">Car Maintenance</div><p class="svc-desc">Oil changes, filter replacements, fluid top-offs, and scheduled maintenance to keep your vehicle running at peak condition year-round.</p></div>
-<div class="svc-card"><span class="svc-icon">⚡</span><div class="svc-title">Electrical Repair</div><p class="svc-desc">Battery issues, alternator problems, wiring faults, and full electrical diagnostics. We track down the root cause — not just the symptom.</p></div>
-<div class="svc-card"><span class="svc-icon">⚙️</span><div class="svc-title">Engine Repair</div><p class="svc-desc">From minor tune-ups to full engine rebuilds. Our technicians have the tools and expertise to handle serious engine work with precision.</p></div>
-<div class="svc-card"><span class="svc-icon">🔬</span><div class="svc-title">General Diagnostics</div><p class="svc-desc">Check engine light on? We run comprehensive computer diagnostics and physical inspections to accurately identify any issues with your vehicle.</p></div>
-<div class="svc-card"><span class="svc-icon">🚗</span><div class="svc-title">More Services</div><p class="svc-desc">Suspension, transmission, AC & heating, tires, and more. If it's on your vehicle, we can likely service it. Give us a call to ask.</p></div>
+<div class="svc-card"><span class="svc-icon">🔴</span><div class="svc-title">Brake Repair</div><p class="svc-desc">Pads, rotors, calipers, and brake fluid flushes. We inspect your full brake system and give you a straight, honest answer on what needs attention.</p><div class="svc-price">Typical Range: $189–$499</div><div class="svc-price-note">Per axle for common brake pad/rotor service. Diagnosis may change estimate.</div></div>
+<div class="svc-card"><span class="svc-icon">🔧</span><div class="svc-title">Car Maintenance</div><p class="svc-desc">Oil changes, filter replacements, fluid top-offs, and scheduled maintenance to keep your vehicle running at peak condition year-round.</p><div class="svc-price">Starting Around: $79</div><div class="svc-price-note">Oil change and basic maintenance pricing varies by oil type and vehicle.</div></div>
+<div class="svc-card"><span class="svc-icon">⚡</span><div class="svc-title">Electrical Repair</div><p class="svc-desc">Battery issues, alternator problems, wiring faults, and full electrical diagnostics. We track down the root cause — not just the symptom.</p><div class="svc-price">Diagnostic: $129–$189</div><div class="svc-price-note">Repair cost quoted after testing. Battery/alternator parts priced separately.</div></div>
+<div class="svc-card"><span class="svc-icon">⚙️</span><div class="svc-title">Engine Repair</div><p class="svc-desc">From minor tune-ups to full engine rebuilds. Our technicians have the tools and expertise to handle serious engine work with precision.</p><div class="svc-price">Estimate After Inspection</div><div class="svc-price-note">Engine work varies widely. We inspect first and explain options before repairs.</div></div>
+<div class="svc-card"><span class="svc-icon">🔬</span><div class="svc-title">General Diagnostics</div><p class="svc-desc">Check engine light on? We run comprehensive computer diagnostics and physical inspections to accurately identify any issues with your vehicle.</p><div class="svc-price">Starting Around: $129</div><div class="svc-price-note">Includes initial scan/diagnostic direction. Deeper testing may require approval.</div></div>
+<div class="svc-card"><span class="svc-icon">🚗</span><div class="svc-title">AC, Tires &amp; More</div><p class="svc-desc">Suspension, transmission, AC &amp; heating, tires, and more. If it's on your vehicle, we can likely service it. Give us a call to ask.</p><div class="svc-price">Call for Estimate</div><div class="svc-price-note">We provide upfront estimates before starting approved work.</div></div>
 </div>
 <div class="svc-cta-bar">
 <h2>NOT SURE WHAT YOU NEED?</h2>
 <p>Bring it in or call us — we'll figure it out together.</p>
-<button class="btn-gold" style="clip-path:none;" onclick="showPage('contact')">Contact Us Today</button>
+<button class="btn-gold" onclick="showPage('book')" style="clip-path:none;">Contact Us Today</button>
+</div>
+</div><div class="page" id="page-book"><div class="page-header"><div class="eyebrow">Schedule Service</div><div class="heading" style="margin-bottom:0">BOOK APPOINTMENT</div><p>Request service with your contact info, preferred date/time, and vehicle details. This keeps booking separate from the general contact page.</p></div><div class="booking-page-panel">
+<div class="eyebrow">Book Appointment</div>
+<div class="heading" style="font-size:2.8rem; margin-bottom:24px;">SCHEDULE<br/>SERVICE</div>
+<div class="booking-intro">
+<strong>Fast appointment request:</strong> choose the service, preferred date/time, and vehicle information. A staff member can confirm the exact appointment after reviewing the request.
+</div>
+<form autocomplete="on" class="booking-form" id="appointment-form" name="appointment" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="company_website" onsubmit="return submitAppointment(event)">
+<input type="hidden" name="form-name" value="appointment"/>
+<input autocomplete="off" class="honeypot" name="company_website" tabindex="-1" type="text"/>
+<div class="form-row">
+<div>
+<label class="form-label" for="first-name">First Name</label>
+<input autocomplete="given-name" id="first-name" name="firstName" placeholder="John" required="" type="text"/>
+</div>
+<div>
+<label class="form-label" for="last-name">Last Name</label>
+<input autocomplete="family-name" id="last-name" name="lastName" placeholder="Smith" required="" type="text"/>
 </div>
 </div>
-
+<div class="form-row">
+<div>
+<label class="form-label" for="phone">Phone Number</label>
+<input autocomplete="tel" id="phone" name="phone" placeholder="(410) 000-0000" required="" type="tel"/>
+</div>
+<div>
+<label class="form-label" for="email">Email Address</label>
+<input autocomplete="email" id="email" name="email" placeholder="you@email.com" required="" type="email"/>
+</div>
+</div>
+<div class="form-row">
+<div>
+<label class="form-label" for="service">Service Needed</label>
+<select id="service" name="service" required="">
+<option value="">Select a service...</option>
+<option>Brake Repair</option>
+<option>Car Maintenance / Oil Change</option>
+<option>Electrical System Repair</option>
+<option>Engine Repair</option>
+<option>General Diagnostics</option>
+<option>AC / Heating</option>
+<option>Suspension</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label class="form-label" for="preferred-date">Preferred Date</label>
+<input id="preferred-date" name="preferredDate" required="" type="date"/>
+<div class="form-help">Monday–Friday only. The shop is closed Saturday and Sunday.</div>
+</div>
+</div>
+<div class="form-row">
+<div>
+<label class="form-label" for="preferred-time">Preferred Time</label>
+<select id="preferred-time" name="preferredTime" required="">
+<option value="">Select a time...</option>
+<option>8:00 AM</option>
+<option>9:00 AM</option>
+<option>10:00 AM</option>
+<option>11:00 AM</option>
+<option>12:00 PM</option>
+<option>1:00 PM</option>
+<option>2:00 PM</option>
+<option>3:00 PM</option>
+<option>4:00 PM</option>
+</select>
+</div>
+<div>
+<label class="form-label" for="vehicle-year">Vehicle Year</label>
+<input id="vehicle-year" inputmode="numeric" max="2035" min="1950" name="vehicleYear" placeholder="2020" required="" type="number"/>
+</div>
+</div>
+<div class="form-row">
+<div>
+<label class="form-label" for="vehicle-make">Vehicle Make</label>
+<input id="vehicle-make" name="vehicleMake" placeholder="Toyota" required="" type="text"/>
+</div>
+<div>
+<label class="form-label" for="vehicle-model">Vehicle Model</label>
+<input id="vehicle-model" name="vehicleModel" placeholder="Camry" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="mileage">Mileage</label>
+<input id="mileage" inputmode="numeric" min="0" name="mileage" placeholder="85,000" type="number"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="message">Vehicle Details &amp; Issue Description</label>
+<textarea id="message" name="message" placeholder="Describe what's going on with your vehicle, warning lights, sounds, or repair needs..." required=""></textarea>
+</div>
+<button class="submit-btn" type="submit">Request Appointment →</button>
+<div aria-live="polite" class="form-status" id="form-status"></div>
+<div aria-live="polite" class="confirmation-box" id="appointment-confirmation"></div>
+</form>
+</div></div>
 <!-- ══ ABOUT ══ -->
 <div class="page" id="page-about">
 <div class="about-split">
@@ -577,7 +1278,7 @@ REVOLUTION
 </div>
 <div class="about-fact">
 <div class="about-fact-num">100%</div>
-<div class="about-fact-label">Family Owned & Operated</div>
+<div class="about-fact-label">Family Owned &amp; Operated</div>
 </div>
 <div class="about-fact">
 <div class="about-fact-num">✓</div>
@@ -587,7 +1288,7 @@ REVOLUTION
 </div>
 <div class="about-right">
 <div class="eyebrow">Our Story</div>
-<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br>REVOLUTION<br>MOTOR WORKS</div>
+<div class="heading" style="font-size:3rem; margin-bottom:32px;">ABOUT<br/>REVOLUTION<br/>MOTOR WORKS</div>
 <p>Revolution Motor Works was built on a simple idea: <strong>every customer deserves honest, high-quality auto repair at a fair price.</strong> We're a family-owned shop located in Finksburg, Maryland, proud to serve the Pikesville area and surrounding communities.</p>
 <p>Over the past 12+ years, we've earned a reputation for doing the work right — the first time. Our team brings deep expertise across all vehicle makes and models, from everyday commuters to performance vehicles. We invest in proper tools and training so you get dealer-level knowledge without the dealer-level markup.</p>
 <p>With nearly 800 five-star Google reviews, our track record speaks for itself. But we never take that trust for granted — every car that comes through our door gets our full attention and care.</p>
@@ -604,27 +1305,223 @@ REVOLUTION
 <p style="color:var(--muted); margin-bottom:32px; font-size:1.05rem; font-weight:300;">Drop by, call us, or send a message — we're here to help.</p>
 <button class="btn-gold" onclick="showPage('contact')">Get In Touch</button>
 </div>
+</div><div class="page" id="page-reviews"><div class="page-header"><div class="eyebrow">Proof &amp; Gallery</div><div class="heading" style="margin-bottom:0">REVIEWS &amp; SHOP PHOTOS</div><p>Customer trust, shop photos, review proof, and before/after examples live together on this page so the homepage stays clean.</p></div><div class="reviews-bg">
+<div class="eyebrow">Google Reviews &amp; Trust</div>
+<div class="heading">REAL PROOF<br/>BEFORE THEY CALL</div>
+<div aria-label="Review trust statistics" class="review-trust-bar">
+<div class="review-trust-item"><div class="review-trust-num">4.9★</div><div class="review-trust-label">Google rating</div></div>
+<div class="review-trust-item"><div class="review-trust-num">768</div><div class="review-trust-label">Google reviews</div></div>
+<div class="review-trust-item"><div class="review-trust-num">12+</div><div class="review-trust-label">Years serving Maryland</div></div>
+<div class="review-trust-item"><div class="review-trust-num">✓</div><div class="review-trust-label">Family-owned shop</div></div>
 </div>
-
+<div class="review-actions">
+<a class="btn-gold" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+reviews" rel="noopener" style="text-decoration:none;" target="_blank">Read Live Google Reviews</a>
+<a class="btn-ghost" href="https://www.google.com/search?q=Revolution+Motor+Works+Finksburg+MD+write+a+review" rel="noopener" style="text-decoration:none;" target="_blank">Leave a Review</a>
+</div>
+<p class="review-note">Tip: replace these sample review cards with exact customer quotes from the shop’s public Google Business Profile before launch. That keeps the site honest and makes the trust section feel more real.</p>
+<div class="reviews-grid">
+<div class="review">
+<div class="review-tag">Verified review theme</div>
+<div class="review-quote">"</div>
+<p class="review-text">Customers repeatedly look for honest diagnostics, clear pricing, and a shop that explains the repair before doing the work. Highlighting that directly helps visitors feel safe requesting service.</p>
+<div class="review-footer">
+<div class="review-author">Transparency</div>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<div class="review">
+<div class="review-tag">Verified review theme</div>
+<div class="review-quote">"</div>
+<p class="review-text">Fast communication is one of the biggest conversion points for auto repair. This section tells customers they can expect a quick response after submitting an appointment request.</p>
+<div class="review-footer">
+<div class="review-author">Communication</div>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<div class="review">
+<div class="review-tag">Verified review theme</div>
+<div class="review-quote">"</div>
+<p class="review-text">Family-owned local service is a major trust signal. Use real shop photos and real review quotes here to make the website feel more personal than a chain repair shop.</p>
+<div class="review-footer">
+<div class="review-author">Local Trust</div>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+</div>
+<div class="trust-strip">
+<div class="trust-card"><strong>No-pressure estimates</strong><span>Encourages customers to submit service requests without feeling locked in.</span></div>
+<div class="trust-card"><strong>Clear repair explanations</strong><span>Shows that the shop explains the problem before starting the job.</span></div>
+<div class="trust-card"><strong>Local Maryland service</strong><span>Reinforces that this is a nearby, community-based auto shop.</span></div>
+</div>
+</div><div class="photo-section" id="shop-photos">
+<div class="eyebrow">Shop Photos</div>
+<div class="heading">SEE THE SHOP<br/>BEFORE YOU VISIT</div>
+<p class="photo-intro">Real photos make an auto repair website feel much more trustworthy. This section is built as a ready-to-use gallery: replace the placeholder blocks with actual photos of the garage, technicians, front desk, waiting area, and finished work.</p>
+<div class="photo-grid">
+<div class="photo-card" data-photo-label="Garage Bay">
+<div class="photo-caption"><strong>Clean Service Bays</strong><span>Show customers where their vehicle will be worked on and make the shop feel professional.</span></div>
+</div>
+<div class="photo-card" data-photo-label="Technicians">
+<div class="photo-caption"><strong>Meet the Team</strong><span>Real mechanic photos help visitors feel like they know who is handling their car.</span></div>
+</div>
+<div class="photo-card" data-photo-label="Front Desk">
+<div class="photo-caption"><strong>Easy Check-In</strong><span>Show the customer entrance, office, or waiting area so first-time visitors know what to expect.</span></div>
+</div>
+<div aria-label="Before and after repair photo placeholder" class="before-after-card">
+<div class="ba-panel">
+<div class="ba-label">Before</div>
+<div class="ba-caption">Use a real photo of a worn part, diagnostic issue, brake wear, leak, or damaged component.</div>
+</div>
+<div class="ba-panel">
+<div class="ba-label">After</div>
+<div class="ba-caption">Show the completed repair, clean install, replaced part, or finished vehicle to prove quality work.</div>
+</div>
+</div>
+<div class="photo-card" data-photo-label="Finished Work">
+<div class="photo-caption"><strong>Completed Repairs</strong><span>Use finished-job photos to show attention to detail and build confidence before customers book.</span></div>
+</div>
+</div>
+<div class="photo-note"><strong>Launch tip:</strong> add 6–10 real images before publishing for a customer. Even smartphone photos are better than generic stock images because they make the business feel legitimate and local.</div>
+</div></div><div class="page" id="page-account"><div class="page-header"><div class="eyebrow">Customer Tools</div><div class="heading" style="margin-bottom:0">ACCOUNT &amp; VEHICLE</div><p>Create a quick customer profile and save vehicle details for faster future booking requests.</p></div><section class="account-benefits" id="account-benefits">
+<div class="account-benefits-wrap">
+<div class="account-copy">
+<div class="eyebrow">Customer Account</div>
+<div class="heading" style="margin-bottom:26px;">SAVE YOUR<br/>SERVICE INFO</div>
+<p>Create a quick customer profile so future appointment requests are faster. Customers can save their contact information now, and this section is ready to connect later to vehicle history, service reminders, and appointment tracking.</p>
+<div class="account-benefit-grid">
+<div class="account-benefit"><div class="account-benefit-icon">🚗</div><div class="account-benefit-title">Saved Vehicle Info</div><div class="account-benefit-text">Let customers save year, make, model, and mileage for faster requests.</div></div>
+<div class="account-benefit"><div class="account-benefit-icon">🧾</div><div class="account-benefit-title">Service History Ready</div><div class="account-benefit-text">Designed so you can later connect repairs, invoices, and notes to a profile.</div></div>
+<div class="account-benefit"><div class="account-benefit-icon">🔔</div><div class="account-benefit-title">Reminder Friendly</div><div class="account-benefit-text">Email or phone capture makes oil change, brake, and inspection reminders possible.</div></div>
+<div class="account-benefit"><div class="account-benefit-icon">⚡</div><div class="account-benefit-title">Faster Booking</div><div class="account-benefit-text">Returning customers do not need to re-type their basic contact details every time.</div></div>
+</div>
+</div>
+<div class="account-card">
+<div class="account-card-inner">
+<div class="account-card-kicker">Why Create One?</div>
+<div class="account-card-title">MAKE EVERY<br/>VISIT EASIER</div>
+<ul class="account-card-list">
+<li><span>✓</span> Remember name, email, or phone number on this device</li>
+<li><span>✓</span> Speed up appointment requests and contact forms</li>
+<li><span>✓</span> Build toward future service history and vehicle profiles</li>
+<li><span>✓</span> Give customers a clear reason to log in</li>
+</ul>
+<button class="btn-gold" onclick="showLogin()" type="button">Create Customer Account</button>
+<div class="account-note">Demo mode: this saves locally in the browser. For a live customer account system, connect this form to a secure backend/database.</div>
+</div>
+</div>
+</div>
+</section><section class="vehicle-profile-section" id="vehicle-profile">
+<div class="vehicle-profile-wrap">
+<div class="vehicle-profile-copy">
+<div class="eyebrow">Vehicle Profile</div>
+<div class="heading" style="margin-bottom:26px;">SAVE YOUR<br/>PRIMARY VEHICLE</div>
+<p>Let customers save their vehicle once so future appointment requests are faster and more accurate. This is useful for repeat customers who come back for oil changes, brakes, diagnostics, and maintenance reminders.</p>
+<div class="vehicle-profile-points">
+<div class="vehicle-profile-point"><span>✓</span><div>Auto-fill appointment requests with year, make, model, mileage, and license plate if provided.</div></div>
+<div class="vehicle-profile-point"><span>✓</span><div>Help the shop prepare the right parts, tools, and diagnostic information before the customer arrives.</div></div>
+<div class="vehicle-profile-point"><span>✓</span><div>Ready to connect later to a real database, customer dashboard, CRM, or repair shop software.</div></div>
+</div>
+</div>
+<div class="vehicle-profile-card">
+<div class="vehicle-profile-card-title">MY VEHICLE</div>
+<div class="vehicle-profile-card-sub">Demo mode: this saves in the browser using localStorage. On a real client website, this should be saved securely to the customer account database.</div>
+<form id="vehicle-profile-form" onsubmit="return saveVehicleProfile(event)">
+<div class="form-row">
+<div><label class="form-label" for="profile-year">Year</label><input id="profile-year" inputmode="numeric" max="2035" min="1950" name="year" placeholder="2020" required="" type="number"/></div>
+<div><label class="form-label" for="profile-make">Make</label><input id="profile-make" name="make" placeholder="Toyota" required="" type="text"/></div>
+</div>
+<div class="form-row">
+<div><label class="form-label" for="profile-model">Model</label><input id="profile-model" name="model" placeholder="Camry" required="" type="text"/></div>
+<div><label class="form-label" for="profile-mileage">Mileage</label><input id="profile-mileage" inputmode="numeric" min="0" name="mileage" placeholder="68500" type="number"/></div>
+</div>
+<div class="form-row">
+<div><label class="form-label" for="profile-plate">License Plate <span style="color:#555;font-weight:400;letter-spacing:1px;">Optional</span></label><input id="profile-plate" name="plate" placeholder="Optional" type="text"/></div>
+<div><label class="form-label" for="profile-vin">VIN <span style="color:#555;font-weight:400;letter-spacing:1px;">Optional</span></label><input id="profile-vin" maxlength="17" name="vin" placeholder="Optional" type="text"/></div>
+</div>
+<div class="form-group"><label class="form-label" for="profile-notes">Vehicle Notes</label><textarea id="profile-notes" name="notes" placeholder="Example: check engine light comes on sometimes, prefers synthetic oil, tire size, previous repair notes..."></textarea></div>
+<div class="vehicle-profile-actions">
+<button class="btn-ghost" onclick="prefillAppointmentFromVehicle()" style="clip-path:none; padding:14px;" type="button">Use For Booking</button>
+<button class="btn-gold" style="clip-path:none; padding:14px;" type="submit">Save Vehicle</button>
+</div>
+</form>
+<div class="vehicle-profile-status" id="vehicle-profile-status"></div>
+<div class="saved-vehicle-card" id="saved-vehicle-card"></div>
+</div>
+</div>
+</section></div><div class="page" id="page-faq"><section class="faq-section" id="faq">
+<div class="faq-wrap">
+<div class="eyebrow">Common Questions</div>
+<div class="heading">AUTO REPAIR<br/>FAQ</div>
+<p class="faq-intro">Answering common questions up front makes the site easier for customers, reduces phone friction, and helps visitors feel more comfortable before requesting service.</p>
+<div class="faq-list">
+<div class="faq-item open">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+          Do I need an appointment?
+          <span class="faq-icon">−</span>
+</button>
+<div class="faq-answer">Appointments are recommended so the shop can reserve time for your vehicle. Customers can still call to ask about same-day availability for urgent issues.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+          Do you provide estimates before repairs?
+          <span class="faq-icon">+</span>
+</button>
+<div class="faq-answer">Yes. The site should clearly explain that customers receive an estimate and explanation before repair work begins, which helps build trust and reduce hesitation.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+          Do you work on foreign and domestic vehicles?
+          <span class="faq-icon">+</span>
+</button>
+<div class="faq-answer">This section tells customers that the shop can service many makes and models. You can later customize this with the exact brands Revolution Motor Works wants to promote.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+          Can I wait while my car is serviced?
+          <span class="faq-icon">+</span>
+</button>
+<div class="faq-answer">For smaller jobs like diagnostics, oil changes, or quick inspections, customers can call ahead to confirm wait-time availability. Larger repairs may require drop-off.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+          What information should I bring?
+          <span class="faq-icon">+</span>
+</button>
+<div class="faq-answer">Customers should bring their vehicle year, make, model, mileage, warning light information, and a short description of the issue. This is also why the booking form asks for vehicle details.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+          What happens after I submit a service request?
+          <span class="faq-icon">+</span>
+</button>
+<div class="faq-answer">After a customer submits the form, they should receive a confirmation message. In a live version, the request can be emailed to the shop or saved into a database/CRM.</div>
+</div>
+</div>
+<div class="faq-cta">
+<div>
+<strong>Still have a question?</strong>
+<span>Call the shop or send a service request and the team can help you figure out the next step.</span>
+</div>
+<button class="btn-gold" onclick="showPage('contact')">Ask a Question</button>
+</div>
+</div>
+</section></div>
 <!-- ══ CONTACT ══ -->
 <div class="page" id="page-contact">
 <div class="contact-split">
 <div class="contact-left">
 <div class="eyebrow">Find Us</div>
-<div class="heading" style="font-size:3rem; margin-bottom:44px;">GET IN<br>TOUCH</div>
-
+<div class="heading" style="font-size:3rem; margin-bottom:44px;">GET IN<br/>TOUCH</div>
 <div class="info-item">
 <div class="info-eyebrow">📞 Phone</div>
 <div class="info-main">(410) 425-4916</div>
 <div class="info-sub">Call us during business hours</div>
 </div>
-
 <div class="info-item">
 <div class="info-eyebrow">📍 Address</div>
 <div class="info-main">3306 Baltimore Blvd</div>
 <div class="info-sub">Finksburg, Maryland 21048</div>
 </div>
-
 <div class="info-item">
 <div class="info-eyebrow">🕐 Hours</div>
 <div class="hours-table">
@@ -637,75 +1534,82 @@ REVOLUTION
 <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time closed">Closed</span></div>
 </div>
 </div>
-
 <div class="info-item">
 <div class="info-eyebrow">📍 Service Area</div>
 <div class="info-main">Pikesville &amp; Nearby Areas</div>
 <div class="info-sub">Serving Carroll and Baltimore counties</div>
 </div>
+<div aria-label="Map to Revolution Motor Works" class="map-card">
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048&amp;output=embed" title="Map to Revolution Motor Works in Finksburg, Maryland">
+</iframe>
+<div class="map-card-footer">
+<span>3306 Baltimore Blvd, Finksburg, MD 21048</span>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" target="_blank">Open Directions →</a>
 </div>
-
-<div class="contact-right">
-<div class="eyebrow">Send a Message</div>
-<div class="heading" style="font-size:2.8rem; margin-bottom:36px;">REQUEST<br>SERVICE</div>
-
-<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-
-<input type="hidden" name="form-name" value="contact">
-
-<p style="display:none">
-<label>Don’t fill this out: <input name="bot-field"></label>
-</p>
-
+</div>
+</div>
+<div class="contact-right clean-contact-card">
+<div class="eyebrow">Quick Actions</div>
+<div class="heading" style="font-size:2.8rem; margin-bottom:30px;">CALL OR<br/>VISIT</div>
+<p class="booking-intro"><strong>Need service?</strong> Use the booking page for appointments. Use this page for phone, hours, directions, and quick questions.</p>
+<div class="contact-action-stack"><a class="btn-gold" href="tel:4104254916" style="text-decoration:none; text-align:center; clip-path:none;">Call Now</a><a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" style="text-decoration:none; text-align:center; clip-path:none;" target="_blank">Get Directions</a><button class="btn-ghost" onclick="showPage('book')" style="clip-path:none;" type="button">Book Appointment</button></div>
+<div style="height:32px"></div>
+<div class="eyebrow">Quick Question</div>
+<form class="booking-form" id="contact-form" name="contact" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="company_website_contact" onsubmit="return submitContactNetlify(event)">
+<input type="hidden" name="form-name" value="contact"/>
+<input autocomplete="off" class="honeypot" name="company_website_contact" tabindex="-1" type="text"/>
 <div class="form-row">
-<div>
-<label class="form-label">First Name</label>
-<input type="text" name="firstName" required>
+<div><label class="form-label" for="contact-name">Name</label><input autocomplete="name" id="contact-name" name="name" placeholder="John Smith" required type="text"/></div>
+<div><label class="form-label" for="contact-phone">Phone</label><input autocomplete="tel" id="contact-phone" name="phone" placeholder="(410) 000-0000" type="tel"/></div>
 </div>
-<div>
-<label class="form-label">Last Name</label>
-<input type="text" name="lastName" required>
+<div class="form-group"><label class="form-label" for="contact-email">Email</label><input autocomplete="email" id="contact-email" name="email" placeholder="you@email.com" required type="email"/></div>
+<div class="form-group"><label class="form-label" for="contact-message">Message</label><textarea id="contact-message" name="message" placeholder="Ask a question or describe what you need help with..." required></textarea></div>
+<button class="submit-btn" type="submit">Send Question →</button>
+<div aria-live="polite" class="form-status" id="contact-form-status"></div>
+</form>
+</div></div>
 </div>
-</div>
-
+<!-- LOGIN MODAL -->
+<div aria-labelledby="login-title" aria-modal="true" class="login-modal" id="login-modal" role="dialog">
+<div class="login-card">
+<div class="login-title" id="login-title">Create Account</div>
+<p class="login-sub">Create a customer profile so Revolution Motor Works can remember your name, contact info, and eventually your saved vehicle/service history.</p>
+<div class="login-benefits-mini"><ul><li><strong>✓</strong> Faster future appointment requests</li><li><strong>✓</strong> Save contact info on this device</li><li><strong>✓</strong> Ready for vehicle profiles and service history later</li></ul></div>
+<form id="login-form" onsubmit="return submitLogin(event)">
 <div class="form-group">
-<label class="form-label">Phone Number</label>
-<input type="tel" name="phone" required>
+<label class="form-label" for="login-name">Create a Name</label>
+<input autocomplete="name" id="login-name" name="loginName" placeholder="Example: John Smith" required="" type="text"/>
 </div>
-
 <div class="form-group">
-<label class="form-label">Email Address</label>
-<input type="email" name="email" required>
+<label class="form-label" for="login-contact">Email or Phone Number</label>
+<input autocomplete="email" id="login-contact" name="loginContact" placeholder="you@email.com or (410) 000-0000" required="" type="text"/>
 </div>
-
-<div class="form-group">
-<label class="form-label">Service Needed</label>
-<select name="service">
-<option value="">Select a service...</option>
-<option>Brake Repair</option>
-<option>Car Maintenance / Oil Change</option>
-<option>Electrical System Repair</option>
-<option>Engine Repair</option>
-<option>General Diagnostics</option>
-<option>Other</option>
-</select>
+<p class="login-sub" style="font-size:.82rem; margin-top:-8px; margin-bottom:16px;">Demo note: this saves only in this browser. For real accounts, connect this to a secure backend/database.</p>
+<div class="login-actions">
+<button class="btn-ghost" onclick="hideLogin()" style="clip-path:none; padding:14px;" type="button">Cancel</button>
+<button class="btn-gold" style="clip-path:none; padding:14px;" type="submit">Create</button>
 </div>
-
-<div class="form-group">
-<label class="form-label">Vehicle Details</label>
-<textarea name="message" required></textarea>
-</div>
-
-<div data-netlify-recaptcha="true"></div>
-
-<button class="submit-btn" type="submit">Send Message →</button>
-
 </form>
 </div>
 </div>
+<!-- MOBILE STICKY ACTION BAR -->
+<div aria-label="Quick mobile actions" class="mobile-action-bar">
+<a aria-label="Call Revolution Motor Works" href="tel:4104254916">
+<span class="mobile-action-icon">📞</span>
+<span>Call</span>
+</a>
+<a aria-label="Get directions to Revolution Motor Works" href="https://www.google.com/maps/search/?api=1&amp;query=3306%20Baltimore%20Blvd%2C%20Finksburg%2C%20MD%2021048" rel="noopener" target="_blank">
+<span class="mobile-action-icon">📍</span>
+<span>Directions</span>
+</a>
+<button aria-label="Book service appointment" class="mobile-action-primary" onclick="showPage('book')" type="button">
+<span class="mobile-action-icon">🗓️</span>
+<span>Book</span>
+</button>
 </div>
-</div>
-
+<!-- ══ ACCOUNT BENEFITS SECTION ══ -->
+<!-- ══ VEHICLE PROFILE SECTION ══ -->
+<!-- ══ FAQ SECTION ══ -->
 <!-- FOOTER -->
 <footer>
 <div class="footer-top">
@@ -713,13 +1617,7 @@ REVOLUTION
 <div class="footer-logo-text">REVOLUTION <span>MOTOR</span> WORKS</div>
 <div class="footer-tagline">Family owned · Finksburg, MD · (410) 425-4916</div>
 </div>
-<div class="footer-links-col">
-<div class="footer-link-head">Navigate</div>
-<a class="footer-link" onclick="showPage('home')">Home</a>
-<a class="footer-link" onclick="showPage('services')">Services</a>
-<a class="footer-link" onclick="showPage('about')">About</a>
-<a class="footer-link" onclick="showPage('contact')">Contact</a>
-</div>
+<div class="footer-links-col"><div class="footer-link-head">Navigate</div><a class="footer-link" onclick="showPage('home')">Home</a><a class="footer-link" onclick="showPage('services')">Services</a><a class="footer-link" onclick="showPage('book')">Book</a><a class="footer-link" onclick="showPage('about')">About</a><a class="footer-link" onclick="showPage('reviews')">Reviews</a><a class="footer-link" onclick="showPage('account')">Account</a><a class="footer-link" onclick="showPage('faq')">FAQ</a><a class="footer-link" onclick="showPage('contact')">Contact</a></div>
 <div class="footer-links-col">
 <div class="footer-link-head">Contact</div>
 <span class="footer-link">(410) 425-4916</span>
@@ -732,14 +1630,440 @@ REVOLUTION
 <div class="footer-address">3306 Baltimore Blvd, Finksburg, MD 21048</div>
 </div>
 </footer>
-
 <script>
+const COOKIE_DAYS_SECTION = 1;
+const COOKIE_DAYS_USER = 7;
+
+function setCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 86400 * 1000).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires};path=/;SameSite=Lax;Secure`;
+}
+
+function getCookies() {
+  if (!document.cookie) return {};
+  return Object.fromEntries(document.cookie.split('; ').map(item => {
+    const [key, ...rest] = item.split('=');
+    return [key, decodeURIComponent(rest.join('='))];
+  }));
+}
+
+function showSiteMessage(type, title, text, autoClose = true) {
+  const wrap = document.getElementById('site-toast-wrap');
+  if (!wrap) return;
+  const toast = document.createElement('div');
+  toast.className = `site-toast ${type}`;
+  const icon = type === 'success' ? '✓' : type === 'error' ? '!' : 'i';
+  toast.innerHTML = `<div class="site-toast-icon">${icon}</div><div><div class="site-toast-title">${title}</div><div class="site-toast-text">${text}</div></div><button class="site-toast-close" type="button" aria-label="Close message">×</button>`;
+  toast.querySelector('.site-toast-close').addEventListener('click', () => toast.remove());
+  wrap.appendChild(toast);
+  if (autoClose) setTimeout(() => toast.remove(), 5200);
+}
+
 function showPage(id) {
-document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-document.getElementById('page-' + id).classList.add('active');
-document.getElementById('nav-' + id).classList.add('active');
-window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  const nav = document.getElementById('nav-' + id);
+  if (!page || !nav) return;
+  page.classList.add('active');
+  nav.classList.add('active');
+  setCookie('currentSection', id, COOKIE_DAYS_SECTION);
+  closeMobileMenu();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openMobileMenu() {
+  const menu = document.getElementById('nav-menu');
+  const toggle = document.querySelector('.nav-toggle');
+  const backdrop = document.getElementById('mobile-menu-backdrop');
+  if (!menu || !toggle) return;
+  menu.classList.add('open');
+  document.body.classList.add('menu-open');
+  toggle.classList.add('open');
+  toggle.setAttribute('aria-expanded', 'true');
+  if (backdrop) backdrop.classList.add('open');
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('nav-menu');
+  const toggle = document.querySelector('.nav-toggle');
+  const backdrop = document.getElementById('mobile-menu-backdrop');
+  if (menu) menu.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  if (toggle) {
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  if (backdrop) backdrop.classList.remove('open');
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('nav-menu');
+  if (menu && menu.classList.contains('open')) closeMobileMenu();
+  else openMobileMenu();
+}
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeMobileMenu();
+    hideLogin();
+  }
+});
+
+
+function showLogin() {
+  document.getElementById('login-modal').classList.add('open');
+  setTimeout(() => document.getElementById('login-name').focus(), 50);
+}
+
+function hideLogin() {
+  document.getElementById('login-modal').classList.remove('open');
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isValidPhone(value) {
+  const digits = value.replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 15;
+}
+
+function submitLogin(event) {
+  event.preventDefault();
+  const name = document.getElementById('login-name').value.trim();
+  const contact = document.getElementById('login-contact').value.trim();
+
+  if (!name) {
+    showSiteMessage('error', 'Name Required', 'Please create a name for the account.');
+    return false;
+  }
+
+  if (!contact || (!isValidEmail(contact) && !isValidPhone(contact))) {
+    showSiteMessage('error', 'Contact Required', 'Please enter a valid email address or phone number.');
+    return false;
+  }
+
+  const customerProfile = {
+    name,
+    contact,
+    contactType: isValidEmail(contact) ? 'email' : 'phone',
+    createdAt: new Date().toISOString()
+  };
+
+  setCookie('username', name, COOKIE_DAYS_USER);
+  setCookie('userContact', contact, COOKIE_DAYS_USER);
+  localStorage.setItem('customerProfile', JSON.stringify(customerProfile));
+  localStorage.setItem('username', name);
+  localStorage.setItem('userContact', contact);
+
+  const loginButton = document.querySelector('.nav-login');
+  if (loginButton) loginButton.textContent = 'Hi, ' + name.split(' ')[0];
+
+  hideLogin();
+  showSiteMessage('success', 'Account Created', 'Welcome, ' + name + '. Your contact info is saved on this device for faster future service requests.');
+  return false;
+}
+
+function isWeekendDate(dateValue) {
+  // date input returns yyyy-mm-dd; add T12:00 to avoid timezone shifting.
+  const day = new Date(dateValue + 'T12:00:00').getDay();
+  return day === 0 || day === 6;
+}
+
+function setMinimumAppointmentDate() {
+  const dateInput = document.getElementById('preferred-date');
+  if (!dateInput) return;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  dateInput.min = today.toISOString().split('T')[0];
+}
+
+function encodeNetlifyFormData(form, extra = {}) {
+  const formData = new FormData(form);
+  Object.entries(extra).forEach(([key, value]) => formData.set(key, value));
+  return new URLSearchParams(formData).toString();
+}
+
+async function postToNetlifyForms(form, extra = {}) {
+  // Netlify Forms works after this site is deployed on Netlify.
+  // In local preview or GitHub Pages, this request may not be accepted, so the UI still saves a demo copy in localStorage.
+  if (window.location.protocol === 'file:') return { ok: false, localOnly: true };
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeNetlifyFormData(form, extra)
+    });
+    return { ok: response.ok, status: response.status };
+  } catch (error) {
+    console.warn('Netlify Forms submit failed in preview/local mode:', error);
+    return { ok: false, error };
+  }
+}
+
+function submitAppointment(event) {
+  event.preventDefault();
+  const form = document.getElementById('appointment-form');
+  const status = document.getElementById('form-status');
+  const confirmation = document.getElementById('appointment-confirmation');
+  const honeypot = form.querySelector('[name="company_website"]');
+
+  confirmation.classList.remove('show');
+  confirmation.innerHTML = '';
+
+  if (honeypot && honeypot.value) {
+    status.textContent = 'Submission blocked.';
+    showSiteMessage('error', 'Submission Blocked', 'This request looked automated, so it was not submitted.');
+    return false;
+  }
+
+  const dateValue = document.getElementById('preferred-date').value;
+  if (isWeekendDate(dateValue)) {
+    status.textContent = 'Please choose a weekday. Revolution Motor Works is closed Saturday and Sunday.';
+    showSiteMessage('error', 'Choose a Weekday', 'Revolution Motor Works is closed Saturday and Sunday. Please select Monday through Friday.');
+    return false;
+  }
+
+  status.textContent = 'Checking appointment request...';
+
+  const finish = async (token = '') => {
+    const data = Object.fromEntries(new FormData(form));
+    data.recaptchaToken = token;
+    data.submittedAt = new Date().toISOString();
+    status.textContent = 'Sending appointment request...';
+    await postToNetlifyForms(form, { recaptchaToken: token, submittedAt: data.submittedAt });
+
+    const savedAppointments = JSON.parse(localStorage.getItem('appointmentRequests') || '[]');
+    savedAppointments.push(data);
+    localStorage.setItem('appointmentRequests', JSON.stringify(savedAppointments));
+
+    console.log('Appointment request:', data);
+
+    status.textContent = '';
+    confirmation.innerHTML = `
+      <div class="success-panel">
+        <div class="success-panel-head">
+          <div class="success-panel-icon">✓</div>
+          <div>
+            <div class="success-panel-title">Appointment Request Received</div>
+            <div class="success-panel-sub">Thanks, ${data.firstName}. Your request has been saved and is ready for the shop to confirm.</div>
+          </div>
+        </div>
+        <div class="success-panel-grid">
+          <div class="success-panel-item"><strong>Service</strong>${data.service}</div>
+          <div class="success-panel-item"><strong>Preferred Time</strong>${data.preferredDate} at ${data.preferredTime}</div>
+          <div class="success-panel-item"><strong>Vehicle</strong>${data.vehicleYear} ${data.vehicleMake} ${data.vehicleModel}</div>
+          <div class="success-panel-item"><strong>Contact</strong>${data.phone || data.email || 'Contact info saved'}</div>
+        </div>
+        <div class="success-panel-sub" style="margin-top:14px;">Live setup: when this file is deployed on Netlify, this request is submitted to Netlify Forms. A browser copy is also saved for this demo preview.</div>
+        <div class="success-panel-actions">
+          <a href="tel:+14104254916">Call Shop</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=3306+Baltimore+Blvd+Finksburg+MD+21048" target="_blank" rel="noopener">Get Directions</a>
+          <button type="button" onclick="showPage('home')">Back Home</button>
+        </div>
+      </div>
+    `;
+    showSiteMessage('success', 'Request Saved', 'Your appointment request was received. The confirmation details are shown on the page.');
+    confirmation.classList.add('show');
+    form.reset();
+    setMinimumAppointmentDate();
+  loadVehicleProfile();
+  };
+
+  if (window.grecaptcha && 'SITE_KEY' !== 'SITE_KEY') {
+    grecaptcha.ready(function () {
+      grecaptcha.execute('SITE_KEY', { action: 'book_appointment' }).then(finish);
+    });
+  } else {
+    // Demo fallback until you replace SITE_KEY with a real reCAPTCHA key.
+    finish('demo-token');
+  }
+  return false;
+}
+
+
+
+function getVehicleProfile() {
+  try { return JSON.parse(localStorage.getItem('vehicleProfile') || 'null'); }
+  catch (error) { return null; }
+}
+
+function renderSavedVehicleCard(vehicle) {
+  const card = document.getElementById('saved-vehicle-card');
+  if (!card) return;
+  if (!vehicle) { card.classList.remove('show'); card.innerHTML = ''; return; }
+  const mileage = vehicle.mileage ? `${Number(vehicle.mileage).toLocaleString()} miles` : 'Mileage not added yet';
+  const plate = vehicle.plate ? `<div class="saved-vehicle-detail">Plate: ${vehicle.plate}</div>` : '';
+  const vin = vehicle.vin ? `<div class="saved-vehicle-detail">VIN: ${vehicle.vin}</div>` : '';
+  const notes = vehicle.notes ? `<div class="saved-vehicle-detail">Notes: ${vehicle.notes}</div>` : '';
+  card.innerHTML = `<h4>Saved Vehicle</h4><div class="saved-vehicle-main">${vehicle.year} ${vehicle.make} ${vehicle.model}</div><div class="saved-vehicle-detail">${mileage}</div>${plate}${vin}${notes}`;
+  card.classList.add('show');
+}
+
+function loadVehicleProfile() {
+  const vehicle = getVehicleProfile();
+  if (!vehicle) return;
+  const fields = {'profile-year':vehicle.year,'profile-make':vehicle.make,'profile-model':vehicle.model,'profile-mileage':vehicle.mileage,'profile-plate':vehicle.plate,'profile-vin':vehicle.vin,'profile-notes':vehicle.notes};
+  Object.entries(fields).forEach(([id,value]) => { const input=document.getElementById(id); if(input && value) input.value=value; });
+  renderSavedVehicleCard(vehicle);
+}
+
+function submitContactNetlify(event) {
+  event.preventDefault();
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-form-status');
+  const honeypot = form.querySelector('[name="company_website_contact"]');
+
+  if (honeypot && honeypot.value) {
+    status.textContent = 'Submission blocked.';
+    showSiteMessage('error', 'Submission Blocked', 'This message looked automated, so it was not submitted.');
+    return false;
+  }
+
+  status.textContent = 'Sending message...';
+  const data = Object.fromEntries(new FormData(form));
+  data.submittedAt = new Date().toISOString();
+
+  postToNetlifyForms(form, { submittedAt: data.submittedAt }).then(() => {
+    const savedMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+    savedMessages.push(data);
+    localStorage.setItem('contactMessages', JSON.stringify(savedMessages));
+
+    status.innerHTML = '<strong>Message received.</strong> When deployed on Netlify, this will appear in your Netlify Forms dashboard.';
+    status.classList.add('show');
+    showSiteMessage('success', 'Message Received', 'Your message was submitted. The shop can follow up by phone or email.');
+    form.reset();
+  });
+  return false;
+}
+
+function saveVehicleProfile(event) {
+  event.preventDefault();
+  const form = document.getElementById('vehicle-profile-form');
+  const status = document.getElementById('vehicle-profile-status');
+  const data = Object.fromEntries(new FormData(form));
+  const vehicle = {year:data.year.trim(), make:data.make.trim(), model:data.model.trim(), mileage:data.mileage.trim(), plate:data.plate.trim(), vin:data.vin.trim().toUpperCase(), notes:data.notes.trim(), updatedAt:new Date().toISOString()};
+  if (!vehicle.year || !vehicle.make || !vehicle.model) { status.textContent = 'Please enter the vehicle year, make, and model.'; status.classList.add('show'); showSiteMessage('error', 'Vehicle Info Needed', 'Please enter the vehicle year, make, and model.'); return false; }
+  localStorage.setItem('vehicleProfile', JSON.stringify(vehicle));
+  renderSavedVehicleCard(vehicle);
+  status.innerHTML = `<strong>Vehicle saved.</strong> Future booking requests can now be auto-filled with ${vehicle.year} ${vehicle.make} ${vehicle.model}.`;
+  status.classList.add('show');
+  showSiteMessage('success', 'Vehicle Saved', vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model + ' is saved for faster appointment requests.');
+  return false;
+}
+
+function prefillAppointmentFromVehicle() {
+  const vehicle = getVehicleProfile();
+  const status = document.getElementById('vehicle-profile-status');
+  if (!vehicle) { status.textContent = 'Save a vehicle profile first, then you can use it for booking.'; status.classList.add('show'); showSiteMessage('error', 'Save Vehicle First', 'Add a vehicle profile before copying it into the appointment form.'); return; }
+  const map = {'vehicle-year':vehicle.year,'vehicle-make':vehicle.make,'vehicle-model':vehicle.model,'mileage':vehicle.mileage};
+  Object.entries(map).forEach(([id,value]) => { const input=document.getElementById(id); if(input && value) input.value=value; });
+  status.innerHTML = `<strong>Copied to booking form.</strong> The appointment form now has ${vehicle.year} ${vehicle.make} ${vehicle.model}.`;
+  status.classList.add('show');
+  showSiteMessage('success', 'Vehicle Copied', 'Your saved vehicle was copied into the appointment form.');
+  showPage('contact');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setMinimumAppointmentDate();
+  const cookies = getCookies();
+  if (cookies.currentSection && document.getElementById('page-' + cookies.currentSection)) {
+    showPage(cookies.currentSection);
+  }
+  const savedName = cookies.username || localStorage.getItem('username');
+  const savedContact = cookies.userContact || localStorage.getItem('userContact');
+  if (savedName) {
+    const loginInput = document.getElementById('login-name');
+    if (loginInput) loginInput.value = savedName;
+    const loginButton = document.querySelector('.nav-login');
+    if (loginButton) loginButton.textContent = 'Hi, ' + savedName.split(' ')[0];
+  }
+  if (savedContact) {
+    const contactInput = document.getElementById('login-contact');
+    if (contactInput) contactInput.value = savedContact;
+    const phoneField = document.getElementById('phone');
+    const emailField = document.getElementById('email');
+    if (isValidEmail(savedContact) && emailField) emailField.value = savedContact;
+    if (isValidPhone(savedContact) && phoneField) phoneField.value = savedContact;
+  }
+  if (savedName) {
+    const parts = savedName.split(' ');
+    const firstField = document.getElementById('first-name');
+    const lastField = document.getElementById('last-name');
+    if (firstField && !firstField.value) firstField.value = parts[0] || '';
+    if (lastField && !lastField.value) lastField.value = parts.slice(1).join(' ');
+  }
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') hideLogin();
+});
+
+function toggleFaq(button) {
+  const item = button.closest('.faq-item');
+  if (!item) return;
+  const icon = item.querySelector('.faq-icon');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(faq => {
+    faq.classList.remove('open');
+    const faqIcon = faq.querySelector('.faq-icon');
+    if (faqIcon) faqIcon.textContent = '+';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    if (icon) icon.textContent = '−';
+  }
+}
+
+function initFinalPolish() {
+  const progress = document.getElementById('scroll-progress');
+  const backBtn = document.getElementById('back-to-top');
+  const revealTargets = document.querySelectorAll('.section, .home-section, .reviews-bg, .page-header, .svc-card, .review, .pillar, .photo-section, .faq-section, .account-benefits, .vehicle-profile-section, .contact-split, .about-split');
+  revealTargets.forEach(el => el.classList.add('reveal-on-scroll'));
+  const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 }) : null;
+  revealTargets.forEach(el => {
+    if (revealObserver) revealObserver.observe(el);
+    else el.classList.add('revealed');
+  });
+  const updateScrollUi = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    if (progress) progress.style.width = pct + '%';
+    if (backBtn) backBtn.classList.toggle('show', window.scrollY > 600);
+  };
+  window.addEventListener('scroll', updateScrollUi, { passive: true });
+  updateScrollUi();
+  if (backBtn) backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+window.addEventListener('DOMContentLoaded', initFinalPolish);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Revolution Motor Works",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3306 Baltimore Blvd",
+    "addressLocality": "Finksburg",
+    "addressRegion": "MD",
+    "postalCode": "21048",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-410-425-4916",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "768"
+  }
 }
 </script>
 </body>
